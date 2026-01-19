@@ -1,0 +1,89 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f3f0e9;
+  color: #19291d;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* TARJETA */
+.card {
+  position: relative;
+  width: 360px;
+  background-color: #f3f0e9;
+  padding: 40px 35px 35px 35px;
+  border-radius: 14px;
+}
+
+/* LOGO */
+.logo {
+  font-size: 48px;
+  font-weight: 900;
+  color: #99d9d9;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* TÍTULO */
+#registro {
+  text-align: center;
+  margin-bottom: 25px;
+  font-weight: 900;
+}
+
+/* LABELS */
+label {
+  font-size: 14px;
+  color: #555555;
+}
+
+/* INPUTS (IGUALES AL LOGIN) */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #cccccc;
+  background: transparent;
+  padding: 8px 0;
+  margin-bottom: 22px;
+  font-size: 16px;
+}
+
+input:focus {
+  outline: none;
+  border-color: #f4592f;
+}
+
+/* BOTÓN */
+input[type="submit"] {
+  width: 100%;
+  background-color: #f4592f;
+  border: none;
+  padding: 12px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+input[type="submit"]:hover {
+  opacity: 0.9;
+}
+
+/* LINK */
+a {
+  display: block;
+  text-align: center;
+  margin-top: 18px;
+  color: #0077cc;
+  text-decoration: none;
+  font-size: 14px;
+}
+

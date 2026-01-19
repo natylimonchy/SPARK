@@ -1,28 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <title>SPARK · Iniciar sesión</title>
+
+   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="login.css">
 </head>
+
 <body>
-    <form>
-        <h3 id="inicio_sesion">Iniciar sesion</h3>
-        <label for="email">Email:</label><br>
-        <input type="text" id="email" name="email"><br>
-        <label for="password">Contraseña:</label><br>
-        <input type="text" id="password" name="password"><br>
-        <br><input type="submit" value="Enviar"> <br>
+  <main class="layout">
 
-        <br><input type="checkbox" id="remember" name="remember" value="remember">
-        <label for="remember"> Recordar contraseña</label><br>
+    <section class="hero">
+      <h1 class="logo">SPARK</h1>
+        <img 
+    src="Diseño sin título (1).png" 
+    alt="Spark mascot" 
+    class="hero-image"
+  >
+    </section>
 
-        <br><a href="registro.html">Crear cuenta</a> <br>
-        <br><a href="password.html">¿Olvidaste tu contraseña?</a><br>
-        <br><a href="https://accounts.google.com">Iniciar sesion con google</a>
+    <section class="auth">
+      <div class="card">
+        <h2>Iniciar sesión</h2>
+
+        <label>Email</label>
+        <input type="email">
+
+        <label>Contraseña</label>
+        <input type="password">
+        <a class="link"href="password.html">¿Olvidaste tu contraseña?</a>
 
 
+        <button>Entrar</button>
 
-    </form>
+        <p class="link">¿No tienes cuenta? <a href="registro.html">Únete</a></p>
+      </div>
+    </section>
+
+  </main>
 </body>
 </html>
