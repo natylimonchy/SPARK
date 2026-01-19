@@ -1,0 +1,103 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #f3f0e9;
+  color: #19291d;
+  height: 100vh;
+  
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  height: 100%;
+}
+
+
+
+.logo {
+  font-size: 165px;              
+  font-weight: 900;
+  color: #99d9d9;
+  line-height: 0.8;
+  margin-left: 80px;
+  margin-top: 50px;
+  letter-spacing: -12px;
+}
+
+.hero-image {
+  width: 360px;
+  display: block;
+  margin: -80px auto 0;
+  margin-left: 195px;
+}
+
+
+
+.auth {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  color: #19291d;
+  padding: 48px;
+  margin-right: 30px ;
+  margin-top: 50px;
+  width: 500px;
+}
+
+.card h2 {
+
+  margin-bottom: 32px;
+  font-weight: 900;
+}
+
+.card label {
+  font-size: 14px;
+  color: #555555;
+}
+
+.card input {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #cccccc;
+  background: transparent;
+  padding: 10px 0;
+  margin-bottom: 28px;
+  font-size: 16px;
+  color: #19291d;
+}
+
+
+.card button {
+  width: 100%;
+  background: #f4592f;
+  border: none;
+  padding: 14px;
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 16px;
+}
+
+.card button:hover {
+  opacity: 0.9;
+}
+
+.link {
+  margin-top: 24px;
+  font-size: 14px;
+}
+
+.link a {
+  color: #0077cc;
+  text-decoration: none;
+  font-weight: 500;
+}
