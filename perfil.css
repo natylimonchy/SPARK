@@ -347,19 +347,3 @@ main{
     align-items:stretch;
   }
 }
-
-/* BURBUJA EDITAR PERFIL */
-.edit-icon::after {
-  content: "";
-  position: absolute;
-  top: -6px;
-  right: -6px;
-
-  width: 14px;
-  height: 14px;
-
-  background-color: var(--accent);
-  border-radius: 50%;
-
-  border: 3px solid var(--bg-main);
-}
