@@ -2,91 +2,130 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <title>Perfil</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="perfil.css">
-  <title>Perfil - SPARK</title>
 </head>
+
 <body>
 
   <!-- HEADER -->
   <header class="topbar">
-    <div> class="logo">SPARK </div>
+    <div class="logo">SPARK</div>
 
-    <div>
-      <button>
-        <img src="icons/settings.png" alt="Configuración">
+    <div class="topbar-actions">
+      <button class="icon-btn">
+        <img src="recursos/config.png" alt="Configuración">
       </button>
-
-      <button>
-        <img src="icons/notis.png" alt="Notificaciones">
+      <button class="icon-btn">
+        <img src="recursos/bell.png" alt="Notificaciones">
       </button>
     </div>
   </header>
 
-  <!-- PERFIL -->
-  <section>
+  <!-- LAYOUT -->
+  <div class="layout">
 
-    <!-- Avatar y editar -->
-    <div>
-      <div>
-        <img src="img/avatar.png" alt="Foto de perfil">
-        <button>
-          <img src="icons/edit.png" alt="Editar perfil">
-        </button>
-      </div>
+    <!-- COLUMNA IZQUIERDA -->
+    <div class="left">
 
-      <h2>Nombre de Usuario</h2>
-      <p>@tagusuario</p>
+      <!-- CABECERA PERFIL -->
+      <section class="profile">
+        <div class="profile-top">
+
+          <!-- Foto + editar -->
+          <div class="avatar-wrap">
+            <img class="avatar" src="recursos/pfp.png" alt="Foto de perfil">
+            <button class="edit-icon" aria-label="Editar perfil">
+              <img src="recursos/edit.png" alt="Editar perfil">
+            </button>
+          </div>
+
+          <!-- Nombre + @ -->
+          <div class="user-block">
+            <h2 class="name">Nombre de Usuario</h2>
+            <p class="handle">@tagusuario</p>
+          </div>
+
+          <!-- Bio -->
+          <div class="bio">
+            <p><strong>Bio</strong></p>
+            <p class="bio-text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi.
+            </p>
+          </div>
+
+        </div>
+
+        <!-- Stats -->
+        <div class="stats">
+          <div>
+            <strong>0</strong>
+            <span>Asistidos</span>
+          </div>
+          <div>
+            <strong>0</strong>
+            <span>Seguidores</span>
+          </div>
+          <div>
+            <strong>0</strong>
+            <span>Seguidos</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- NAV PERFIL -->
+      <nav class="profile-nav">
+        <ul>
+          <li><a class="active" href="#">Publicaciones</a></li>
+          <li><a href="#">Intereses</a></li>
+          <li><a href="#">Reseñas</a></li>
+        </ul>
+      </nav>
+
+      <!-- POSTS -->
+      <main>
+        <section class="posts-grid">
+          <article><img src="recursos/photo.png" alt="Publicación 1"></article>
+          <article><img src="recursos/photo.png" alt="Publicación 2"></article>
+          <article><img src="recursos/photo.png" alt="Publicación 3"></article>
+          <article><img src="recursos/photo.png" alt="Publicación 4"></article>
+          <article><img src="recursos/photo.png" alt="Publicación 5"></article>
+          <article><img src="recursos/photo.png" alt="Publicación 6"></article>
+        </section>
+      </main>
+
     </div>
 
-    <!-- Estadísticas -->
-    <div>
-      <div>
-        <p>0</p>
-        <span>Asistidos</span>
+    <!-- COLUMNA DERECHA -->
+    <aside class="panel">
+      <div class="panel-section">
+        <h3>Próximo evento</h3>
+        <div class="panel-box panel-photo">
+          <img src="recursos/photo.png" alt="Foto del próximo evento">
+        </div>
       </div>
 
-      <div>
-        <p>0</p>
-        <span>Seguidores</span>
+      <div class="panel-section">
+        <h3>Último seguidor</h3>
+        <div class="panel-box panel-text">
+          <p>@tagusuario</p>
+        </div>
       </div>
 
-      <div>
-        <p>0</p>
-        <span>Seguidos</span>
+      <div class="panel-section">
+        <h3>Mejor reseña</h3>
+        <div class="panel-box panel-photo">
+          <img src="recursos/photo.png" alt="Foto de la mejor reseña">
+        </div>
       </div>
-    </div>
+    </aside>
 
-  </section>
-
-  <!-- MENÚ DE SECCIONES -->
-  <nav>
-    <ul>
-      <li><a href="#">Publicaciones</a></li>
-      <li><a href="#">Intereses</a></li>
-      <li><a href="#">Reseñas</a></li>
-    </ul>
-  </nav>
-
-  <!-- GRID DE PUBLICACIONES -->
-  <main>
-    <section>
-
-      <article><img src="img/post1.png" alt="Publicación 1"></article>
-      <article><img src="img/post2.png" alt="Publicación 2"></article>
-      <article><img src="img/post3.png" alt="Publicación 3"></article>
-
-      <article><img src="img/post4.png" alt="Publicación 4"></article>
-      <article><img src="img/post5.png" alt="Publicación 5"></article>
-      <article><img src="img/post6.png" alt="Publicación 6"></article>
-
-      <article><img src="img/post7.png" alt="Publicación 7"></article>
-      <article><img src="img/post8.png" alt="Publicación 8"></article>
-      <article><img src="img/post9.png" alt="Publicación 9"></article>
-
-    </section>
-  </main>
+  </div>
 
 </body>
 </html>
