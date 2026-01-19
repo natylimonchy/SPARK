@@ -1,0 +1,149 @@
+:root {
+  --bg-main: #F3F0E9;
+  --primary: #99D9D9;
+  --accent: #F26A4B;
+  --accent-soft: #F8A18C;
+  --text-main: #2E2E2E;
+  --text-muted: #7A8F8F;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+}
+
+/* ---------- HEADER ---------- */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 48px;
+  background-color: #d1d1d1;
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.topbar > div:last-child {
+  display: flex;
+  gap: 16px;
+}
+
+.topbar button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.topbar img {
+  width: 28px;
+  height: 28px;
+}
+
+/* ---------- PERFIL ---------- */
+section:first-of-type {
+  padding: 32px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+section:first-of-type > div:first-child {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+section:first-of-type img[alt="Foto de perfil"] {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background-color: #777;
+}
+
+section:first-of-type button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+section:first-of-type button img {
+  width: 20px;
+  height: 20px;
+}
+
+section:first-of-type h2 {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+section:first-of-type p {
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+/* ---------- ESTADÍSTICAS ---------- */
+section:first-of-type > div:last-child {
+  display: flex;
+  gap: 48px;
+}
+
+section:first-of-type > div:last-child div {
+  text-align: center;
+}
+
+section:first-of-type span {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+/* ---------- MENÚ SECCIONES ---------- */
+nav {
+  margin: 32px 48px 0;
+  background-color: #e5e5e5;
+  border-radius: 16px 16px 0 0;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  padding: 16px 0;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--text-main);
+  font-weight: 500;
+}
+
+/* ---------- GRID PUBLICACIONES ---------- */
+main {
+  padding: 0 48px 48px;
+}
+
+main > section {
+  background-color: #ffffff;
+  padding: 32px;
+  border-radius: 0 0 16px 16px;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+article img {
+  width: 100%;
+  border-radius: 16px;
+  background-color: #444;
+}

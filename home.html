@@ -6,12 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SPARK</title>
     <link rel="stylesheet" href="home.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800;900&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
 
     <header class="topbar">
-        <div class="logo">SPARK</div>
+
+        <div class="logo">
+            <img src="Logo_Spark (1).png">
+        </div>
 
         <nav class="menu">
             <a href="home.html">Home</a>
@@ -21,12 +28,13 @@
 
         <div class="actions">
 
-            <select  id="español">
+            <select id="español">
                 <option>Español</option>
                 <option>Ingles</option>
                 <option>Catalan</option>
             </select>
             <a href="login.html" class="login">Log in / Sign up</a>
+            <a href="perfil.html" class="login">Perfil</a>
         </div>
     </header>
 
@@ -67,31 +75,45 @@
         <main class="content">
 
             <h2>Recomendados</h2>
-            <div class="cards recomendados">
-                <div class="card">
-                    <button>Ver más</button>
-                </div>
-                <div class="card">
-                    <button>Ver más</button>
-                </div>
-            </div>
+<div class="cards recomendados">
 
-            <h2>Eventos por categoría</h2>
-            <div class="cards grid">
-                <div class="card"></div>
-                <div class="card"></div>
-                <div class="card"></div>
-            </div>
-            <div class="cards grid">
-                <div class="card"></div>
-                <div class="card"></div>
-                <div class="card"></div>
-            </div>
-            <div class="cards grid">
-                <div class="card"></div>
-                <div class="card"></div>
-                <div class="card"></div>
-            </div>
+    <div class="card">
+        <img src="eventos/66d9f2fc887171bdd3f0bdbc1be92e21.jpg" alt="Evento">
+        <div class="card-info">
+            <h4>Concierto Indie Night</h4>
+            <p class="meta">Centro · 12€ · Música</p>
+            <button>Ver más</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="eventos/extreme-downhill-mountain-bike-sport-illustration-perfect-for-chanpion-ship-event-logo-and-t-shirt-design-vector.jpg"
+            alt="Evento">
+        <div class="card-info">
+            <h4>Downhill Experience</h4>
+            <p class="meta">Montaña · Gratis · Deporte</p>
+            <button>Ver más</button>
+        </div>
+    </div>
+
+</div>
+
+                    <h2>Eventos por categoría</h2>
+                    <div class="cards grid">
+                        <div class="card"></div>
+                        <div class="card"></div>
+                        <div class="card"></div>
+                    </div>
+                    <div class="cards grid">
+                        <div class="card"></div>
+                        <div class="card"></div>
+                        <div class="card"></div>
+                    </div>
+                    <div class="cards grid">
+                        <div class="card"></div>
+                        <div class="card"></div>
+                        <div class="card"></div>
+                    </div>
 
         </main>
 
