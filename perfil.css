@@ -268,7 +268,7 @@ main{
   text-underline-offset: 6px;
 }
 
-/* Cajas internas (no gris: primary/accent soft) */
+/* Cajas internas */
 .panel-box{
   border-radius: 18px;
   overflow:hidden;
