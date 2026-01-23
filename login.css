@@ -46,20 +46,26 @@ body {
 }
 
 .card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;   /* centra verticalmente */
+  
+
+  background-color: #c8dfdf;
   color: #19291d;
   padding: 48px;
-  margin-right: 30px ;
-  margin-top: 50px;
-  width: 500px;
+  width: 570px;
+  height: 100%;
 }
 
 .card h2 {
-
+  
   margin-bottom: 32px;
   font-weight: 900;
 }
 
 .card label {
+  
   font-size: 14px;
   color: #555555;
 }
@@ -68,7 +74,8 @@ body {
   width: 100%;
   border: none;
   border-bottom: 1px solid #cccccc;
-  background: transparent;
+  background: rgba(255, 255, 255, 0.623);
+  margin-top: 10px;
   padding: 10px 0;
   margin-bottom: 28px;
   font-size: 16px;
@@ -89,6 +96,7 @@ body {
 
 .card button:hover {
   opacity: 0.9;
+  transform:translateY(1.5px)
 }
 
 .link {
