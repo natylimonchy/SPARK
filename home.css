@@ -3,14 +3,13 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Poppins', sans-serif;
-     font-weight: 900;
 }
 
 /* BODY */
 body {
     background-color: #f3f0e9;
     color: #000;
+    font-family: 'Poppins', sans-serif;
 }
 
 /* ================= HEADER ================= */
@@ -38,11 +37,12 @@ body {
 }
 
 .menu a {
-    margin: 0 12px;
+    margin: 0 20px;
     text-decoration: none;
     color: #000;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 16px;
+    border-radius: 20px;
 }
 
 .menu a:hover {
@@ -53,13 +53,14 @@ body {
     display: flex;
     align-items: center;
     gap: 12px;
+    font-weight: 900;
 }
 
 .login {
     border: none;
     padding: 6px 14px;
     border-radius: 20px;
-    background-color: #f3f0e9;
+    background-color: #f4592f;
     cursor: pointer;
 }
 
@@ -118,6 +119,7 @@ body {
     border: 1px solid #ffffff;
     background-color: #f5f5f5;
     outline: none;
+    font-family: 'poppins', sans-serif;
 }
 
 /* ================= CONTENIDO ================= */
@@ -196,7 +198,7 @@ body {
 
 .card button {
     margin-top: 6px;
-    background-color: #99D9D9;
+    background-color: #f4592f;
     border: none;
     padding: 6px 14px;
     border-radius: 20px;
@@ -217,9 +219,10 @@ body {
     appearance: none;
     padding: 6px 28px 6px 12px;
     border-radius: 20px;
-    border: 1px solid #ffffff;
-    background-color: #f2f2f2;
+    border: 1px solid #f4592f;
+    background-color: #f4592f;
     cursor: pointer;
+    font-weight: 900;
 }
 .cards.recomendados {
     align-items: stretch;
