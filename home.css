@@ -22,18 +22,31 @@ body {
     background-color: #99D9D9;
     padding: 12px 32px;
     height: 100px;
+    
+}
+#español {
+    border: none;
+    padding: 6px 14px;
+    border-radius: 20px;
+    background-color: #f4592f;
+    cursor: pointer;
 }
 
 .logo {
-      
+      display: inline-block;
    height: 100%;
-    display: flex;
+    margin-top: -156px;
+    margin-left: 29px;
     align-items: center;
 }
 .logo img{
     
-   height: 190px;
+   height: 280px;
     width: auto;
+}
+nav.menu{
+    /* margin-left: 450px; */
+    margin-top: 17px;
 }
 
 .menu a {
@@ -96,6 +109,8 @@ body {
     padding: 18px;
     border-radius: 15px;
     height: fit-content;
+    margin-top: 46px;
+    margin-left: -200px;
 }
 
 .filters h3 {
