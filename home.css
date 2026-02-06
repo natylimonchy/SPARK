@@ -26,18 +26,22 @@ body {
 }
 #español {
     border: none;
-    padding: 6px 14px;
+    padding: 5px 6px;
     border-radius: 20px;
-    background-color: #f4592f;
+    background-color: #ffffff8f;
     cursor: pointer;
+    margin-left: 50px;
+    padding-left: 3px;
 }
 
 .logo {
-      display: inline-block;
+      display: flex;
    height: 100%;
-    margin-top: -156px;
+    margin-top: -122px;
     margin-left: 29px;
     align-items: center;
+    position: relative;
+    left: -7px;
 }
 .logo img{
     
@@ -65,8 +69,9 @@ nav.menu{
 .actions {
     display: flex;
     align-items: center;
-    gap: 12px;
-    font-weight: 900;
+    gap: 10px;
+    font-weight: 640;
+    font-size: 13px;
 }
 
 .login {
@@ -75,6 +80,8 @@ nav.menu{
     border-radius: 20px;
     background-color: #f4592f;
     cursor: pointer;
+    text-decoration: none;
+    color: #000000ba;
 }
 
 /* ================= SEARCH ================= */
@@ -110,7 +117,7 @@ nav.menu{
     border-radius: 15px;
     height: fit-content;
     margin-top: 46px;
-    margin-left: -200px;
+    margin-left: -227px;
 }
 
 .filters h3 {

@@ -30,6 +30,10 @@ body {
   letter-spacing: -12px;
 }
 
+#mascota{
+  margin-left: 20px;
+}
+
 .hero-image {
   width: 360px;
   display: block;
@@ -109,3 +113,17 @@ body {
   text-decoration: none;
   font-weight: 500;
 }
+
+
+
+
+@media (max-width: 420px) {
+  .layout{
+    grid-template-rows: auto auto;
+
+
+  }
+  
+}
+
+
