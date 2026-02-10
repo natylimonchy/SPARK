@@ -49,7 +49,8 @@ body {
     width: auto;
 }
 nav.menu{
-    /* margin-left: 450px; */
+   
+    margin-left: 61px;
     margin-top: 17px;
 }
 
@@ -199,7 +200,7 @@ nav.menu{
 
 .card img {
     width: 100%;
-    height: 140px;
+    height: 170px;
     object-fit: cover;
 }
 
@@ -248,4 +249,58 @@ nav.menu{
 }
 .cards.recomendados {
     align-items: stretch;
+}
+
+/* FAVORITO */
+.card {
+    position: relative;
+}
+
+.fav {
+    position: absolute;
+    top: 2px;
+    right: 12px;
+    font-size: 32px;
+    cursor: pointer;
+    user-select: none;
+    transition: transform 0.2s ease;
+}
+
+.fav:hover {
+    transform: scale(1.2);
+}
+
+/* ESTRELLAS */
+.rating {
+    color: #f4b400;
+    font-size: 14px;
+    margin-bottom: 4px;
+    letter-spacing: 2px;
+}
+.card-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;   /* 👈 clave */
+    gap: 10px;
+}
+
+/* izquierda ocupa todo */
+.info-left {
+    flex: 1;
+    margin-right: 160px;
+}
+
+/* derecha solo botón */
+
+.info-right {
+    display: flex;
+    align-items: flex-start;
+    transform: translateY(-22px);
+    margin-right: 20px;
+    
+}
+
+/* evita margen raro */
+.card button {
+    margin-top: 0;
 }
