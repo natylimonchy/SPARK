@@ -20,7 +20,7 @@ body {
 /* ===== TOPBAR ===== */
 .topbar {
     background: #9ddedd;
-    padding: 14px 24px;
+    padding: 25px 24px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -50,7 +50,7 @@ body {
 
 /* ===== EVENTO ===== */
 .event-card {
-    background: #f1efe9;
+    background: #b5b2aa33;
     border-radius: 24px;
     padding: 25px;
     display: flex;
@@ -143,9 +143,9 @@ body {
 /* ===== FOOTER ===== */
 .footer {
     text-align: center;
-    padding: 10px;
+    padding: 20px;
     font-size: 13px;
-    background: #9ddedd;
+    background: #9ddedd4f;
 }
 
 /* ===== NAV MÓVIL ===== */
