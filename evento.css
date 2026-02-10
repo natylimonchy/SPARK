@@ -1,0 +1,241 @@
+/* ===== RESET ===== */
+* {
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+/* ===== BODY ===== */
+body {
+    background: #f6f2ea;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ===== TOPBAR ===== */
+.topbar {
+    background: #9ddedd;
+    padding: 14px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu a,
+.actions a {
+    margin: 0 10px;
+    text-decoration: none;
+    font-weight: 600;
+    color: #000;
+}
+
+/* ===== MAIN ===== */
+.page {
+    flex: 1;
+    padding: 30px;
+}
+
+/* ===== LAYOUT DESKTOP ===== */
+.event-layout {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 25px;
+    height: 100%;
+}
+
+/* ===== EVENTO ===== */
+.event-card {
+    background: #f1efe9;
+    border-radius: 24px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.event-image {
+    background: #d6d6d6;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+}
+
+.event-meta {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+}
+
+.event-meta span {
+    background: #fff;
+    padding: 6px 12px;
+    border-radius: 14px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.event-title {
+    margin: 10px 0;
+}
+
+.event-description {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.reserve-btn {
+    margin-top: 20px;
+    padding: 12px;
+    width: 100%;
+    border-radius: 20px;
+    border: none;
+    background: #ff6a3d;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* ===== PERFIL DESKTOP ===== */
+.profile-card {
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-avatar {
+    width: 90px;
+    height: 120px;
+    background: #bdbdbd;
+    border-radius: 50%;
+    margin-bottom: 12px;
+}
+
+.profile-stats {
+    width: 100%;
+    margin: 20px 0;
+}
+
+.profile-stats div {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.contact-btn {
+    margin-top: auto;
+    background: #ff6a3d;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 24px;
+    cursor: pointer;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+    text-align: center;
+    padding: 10px;
+    font-size: 13px;
+    background: #9ddedd;
+}
+
+/* ===== NAV MÓVIL ===== */
+.mobile-nav {
+    display: none;
+}
+
+/* ===================== */
+/* 📱 TABLET */
+/* ===================== */
+
+@media (max-width: 1024px) and (min-width: 769px) {
+
+    .event-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-card {
+        display: none;
+    }
+
+    .event-card {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    /* 👉 BOTONES ABAJO ACTIVOS */
+    .mobile-nav {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background: #9ddedd;
+        padding: 10px 0;
+        justify-content: space-around;
+        font-size: 20px;
+    }
+
+    .footer {
+        display: none;
+    }
+
+    /* espacio para que no tape contenido */
+    .page {
+        padding-bottom: 70px;
+    }
+}
+
+/* ===================== */
+/* 📱 RESPONSIVE MÓVIL */
+/* ===================== */
+
+@media (max-width: 768px) {
+
+    .menu,
+    .actions,
+    .footer {
+        display: none;
+    }
+
+    .page {
+        padding: 0;
+    }
+
+    .event-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-card {
+        display: none;
+    }
+
+    .event-card {
+        grid-template-columns: 1fr;
+        border-radius: 24px 24px 0 0;
+        min-height: calc(100vh - 120px);
+    }
+
+    .event-image {
+        min-height: 200px;
+    }
+
+    .mobile-nav {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background: #9ddedd;
+        padding: 10px 0;
+        justify-content: space-around;
+        font-size: 20px;
+    }
+}
