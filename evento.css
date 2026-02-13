@@ -162,6 +162,12 @@ body {
     .event-layout {
         grid-template-columns: 1fr;
     }
+    .menu{
+        display: none;
+    }
+      .perfil-btn {
+    display: none;
+}
 
     .profile-card {
         display: none;
@@ -179,9 +185,9 @@ body {
         bottom: 0;
         width: 100%;
         background: #9ddedd;
-        padding: 10px 0;
+        padding: 12px 0;
         justify-content: space-around;
-        font-size: 20px;
+        font-size: 33px;
     }
 
     .footer {
@@ -201,10 +207,12 @@ body {
 @media (max-width: 768px) {
 
     .menu,
-    .actions,
     .footer {
         display: none;
     }
+      .perfil-btn {
+    display: none;
+}
 
     .page {
         padding: 0;
@@ -234,8 +242,8 @@ body {
         bottom: 0;
         width: 100%;
         background: #9ddedd;
-        padding: 10px 0;
+        padding: 12px 0;
         justify-content: space-around;
-        font-size: 20px;
+        font-size: 33px;
     }
 }
