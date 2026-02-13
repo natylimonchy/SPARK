@@ -14,28 +14,70 @@
   --radius: 22px;
 }
 
-*{margin:0;padding:0;box-sizing:border-box;}
+/* RESET BÁSICO */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
 body{
-  font-family:'Poppins',sans-serif;
-  background:var(--bg-main);
+  background:
+    radial-gradient(circle at 20% 10%, #ffffff 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, #e9f4f4 0%, transparent 40%),
+    var(--bg-main);
+  background-color: #f3f0e9;
+    color: #000;
+    font-family: 'Poppins', sans-serif;
   color:var(--text-main);
 }
 
+
+
 /* TOPBAR */
 .topbar{
+  background: var(--primary);
+  padding: 16px 52px;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:26px 52px;
+
+  position: sticky;
+  top:0;
+  z-index:1000;
+
+  
 }
 
-.logo{
-  font-size:32px;
-  font-weight:600;
-  letter-spacing:3px;
-  color:var(--primary);
+nav.menu{
+   
+    margin-left: 61px;
+    margin-top: 5px;
 }
+
+.menu a {
+    margin: 0 20px;
+    text-decoration: none;
+    color: #000;
+    font-weight: 600;
+    font-size: 16px;
+    border-radius: 20px;
+    
+}
+
+.menu a:hover {
+    text-decoration: underline;
+}
+
+
+
+.logo{
+  color:#1f2d2d;
+  font-size:30px;
+  letter-spacing:1px;
+  font-weight: 640;
+}
+
 
 .topbar-actions{
   display:flex;
@@ -48,6 +90,7 @@ body{
   cursor:pointer;
   padding:8px;
   border-radius:14px;
+ 
 }
 
 .icon-btn:hover{
@@ -67,6 +110,7 @@ body{
   display:grid;
   grid-template-columns: 1fr 360px; /* izquierda + panel derecho */
   gap: 44px;
+  margin-top: 25px;
 }
 
 .left{
@@ -98,6 +142,7 @@ body{
   border-radius:50%;
   object-fit:cover;
   background:var(--soft);
+ 
 }
 
 /* Edit icon */
@@ -123,10 +168,10 @@ body{
 
 /* Nombre + handle */
 .user-block .name{
-  font-size:28px;
-  font-weight:600;
-  line-height:1.2;
+  font-size:32px;
+  font-weight:700;
 }
+
 
 .user-block .handle{
   margin-top:6px;
@@ -187,6 +232,7 @@ body{
 /* NAV PERFIL */
 .profile-nav{
   margin-top: 34px;
+  
 }
 
 .profile-nav ul{
@@ -203,6 +249,7 @@ body{
   font-size:16px;
   padding-bottom:10px;
   position:relative;
+  font-weight: 640;
 }
 
 .profile-nav a.active::after{
@@ -233,27 +280,26 @@ main{
 }
 
 .posts-grid article{
-  background:var(--card);
-  border-radius: var(--radius);
-  overflow:hidden;
-  box-shadow: var(--shadow);
+  transition:0.25s;
 }
 
+
+
 .posts-grid img{
-  width:100%;
-  height: 260px;
-  object-fit:cover;
-  display:block;
+  height: 220px;
+  border-radius: 18px;
 }
+
 
 /* PANEL DERECHO */
 .panel{
-  align-self:start;
-  background: rgba(46, 46, 46, 0.06);
-  border-radius: 40px;
-  padding: 28px 24px;
-  box-shadow: 0 12px 28px rgba(0,0,0,0.10);
+  background:white;
+  border-radius:28px;
+  padding:26px;
+  box-shadow:0 18px 40px rgba(0,0,0,0.12);
+      margin-left: 41px;
 }
+
 
 .panel-section + .panel-section{
   margin-top: 26px;
@@ -261,11 +307,10 @@ main{
 
 .panel h3{
   font-size:16px;
-  font-weight:500;
+  
   margin-bottom: 14px;
-  text-decoration: underline;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 6px;
+  font-weight: 640;
+  
 }
 
 /* Cajas internas */
