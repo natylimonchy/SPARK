@@ -4,57 +4,60 @@ body{
   font-family:'Poppins',sans-serif;
   background:#f3f0e9;
   color:#19291d;
-  height:100vh;
+  min-height:100svh;
+}
+
+.layout{
+  display:grid;
+  grid-template-columns:1.2fr 1fr;
+  min-height:100vh;
+  align-items:center;
+  
+}
+
+.hero{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  gap:8px;
 }
 
 
 
-.layout {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  min-height: 100vh;
-  align-items: center;
+.logo{
+  font-size:clamp(64px,10vw,120px);
+  font-weight:900;
+  color:#99d9d9;
+  line-height:1;
+  letter-spacing:-0.10em;
+  transform: translateY(60px);
 }
 
-/* Columna izquierda */
-.hero {
-  display: flex;
-  flex-direction: column;
-  justify-content: center; 
-  align-items: center;     
-  gap: 20px;
+.hero-image{
+  max-width:360px;
+  width:70%;
+  display:block;
+  transform: translateY(-50px);
 }
 
-/* SPARK */
-.logo {
-  font-size: 120px;
-  font-weight: 900;
-  color: #99d9d9;
-  letter-spacing: -12px;
-  line-height: .8;
-  margin: 0; 
-}
-
-/* Mascota */
-.hero-image {
-  width: 360px;
-  display: block;
-  margin: 0; 
+.auth{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100%;
+  padding-right:clamp(24px,5vw,64px);
+  transform: translateY(-40px);
 }
 
 
-.auth {
-  display: flex;
-  justify-content: center;
-  align-items: center; 
-  height: 100%;
-}
 
-.card {
-  background-color: #c8dfdf;
-  padding: 48px;
-  width: 570px;
-  border-radius: 16px;
+.card{
+  background-color:#c8dfdf;
+  padding:clamp(20px,5vw,48px);
+  max-width:570px;
+  width:90%;
+  border-radius:16px;
 }
 
 .card h2{margin-bottom:32px;font-weight:900;}
@@ -87,90 +90,141 @@ body{
 .link{margin-top:24px;font-size:14px;}
 .link a{color:#0077cc;text-decoration:none;font-weight:500;}
 
-/* ================= TABLET ================= */
 @media (min-width:481px) and (max-width:1024px){
 
+  html, body{
+    height:100%;
+    overflow:hidden;
+  }
+
   .layout{
+    position:relative;
+    height:100vh;
+    max-height:100vh;
+    overflow:hidden;
     display:flex;
     flex-direction:column;
-    min-height:100vh;
+    align-items:center;
   }
 
   .hero{
+    flex:1;
+    width:100%;
     display:flex;
     flex-direction:column;
+    justify-content:center;
     align-items:center;
-    gap:18px;
-    padding-top:40px;
+    overflow:hidden;
   }
 
   .logo{
-    font-size:90px;
-    letter-spacing:-6px;
+    transform: translateY(12px);
+    letter-spacing:-0.04em;
   }
 
   .hero-image{
-    width:260px;
+    width:42%;
+    transform:none;
   }
 
   .auth{
+    position:absolute;
+    bottom:0;
+    left:0;
     width:100%;
     height:60vh;
-    margin-top:auto;
     display:flex;
     justify-content:center;
-    align-items:center;
+    align-items:stretch;
   }
 
   .card{
-    width:100%;
+    width:96%;
+    max-width:1000px;
     height:100%;
-    border-radius:16px 16px 0 0;
-    padding:40px 30px;
+    border-radius:28px 28px 0 0;
+    padding:32px 40px 24px;
+    display:flex;
+    flex-direction:column;
+    box-sizing:border-box;
+  }
+
+  .card h2{
+    margin-bottom:32px;
+  }
+
+  .card form{
+    display:flex;
+    flex-direction:column;
+    gap:22px;
+    flex:1;
+  }
+
+  .card button{
+    margin-top:auto;
   }
 }
 
-/* ================= MÓVIL ================= */
-@media (max-width: 480px){
+
+@media (max-width:480px){
+
+  body{
+    overflow:hidden;
+  }
 
   .layout{
-    display:flex;
-    flex-direction:column;
-    min-height:100vh;
+    height:100svh;
+    min-height:100svh;
+    grid-template-columns:1fr;
+    grid-template-rows:35svh 65svh;
   }
 
   .hero{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:flex-start;
-    gap:20px;
-    padding-top:35px;
+    height:100%;
+    justify-content:flex-end;
+    gap:0;
+    padding-top:0;
+    overflow:hidden;
   }
 
   .logo{
-    font-size:80px;
-    letter-spacing:-4px;
+    font-size:clamp(56px,16vw,80px);
+    transform:none;
+    margin-bottom:-165px;
+    margin-right: 25px;
   }
 
   .hero-image{
-    width:200px;
-    display:block;
+    width:55%;
+    transform: translateY(70px);
+    margin-right: 3px;
   }
 
   .auth{
+    height:100%;
     width:100%;
-    height:60vh;
-    margin-top:auto;
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    align-self:stretch;
+    padding-right:0;
+    transform:none;
   }
 
   .card{
     width:100%;
+    max-width:none;
     height:100%;
-    border-radius:16px 16px 0 0;
-    padding:28px 20px;
+    border-radius:20px 20px 0 0;
+    padding:24px 20px;
   }
+
+  .card h2{margin-bottom:30px;font-weight:900; margin-top: 45px;}
+  .card label{font-size:18px;color:#555555;}
+
+  .link{margin-top:32px;font-size:17px;}
+  .link a{color:#0077cc;text-decoration:none;font-weight:500;}
+
+  .card button{
+  
+  margin-top:40px;
+  
+}
 }
