@@ -25,13 +25,38 @@ body {
     justify-content: space-between;
     align-items: center;
 }
+.actions {
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-weight:640;
+    font-size:13px;
+}
+.login{
+    border:none;
+    padding:6px 14px;
+    border-radius:20px;
+    background-color:#f4592f;
+    cursor:pointer;
+    text-decoration:none;
+    color:#000000ba;
+}
+#español{
+    border:none;
+    padding:5px 6px;
+    border-radius:20px;
+    background-color:#ffffff8f;
+    cursor:pointer;
+    margin-left:-441px;
+    padding-left:3px;
+}
 
-.menu a,
-.actions a {
+.menu a {
     margin: 0 10px;
     text-decoration: none;
     font-weight: 600;
     color: #000;
+   
 }
 
 /* ===== MAIN ===== */
@@ -157,7 +182,7 @@ body {
 /* 📱 TABLET */
 /* ===================== */
 
-@media (max-width: 1024px) and (min-width: 769px) {
+@media (max-width: 1024px)  {
 
     .event-layout {
         grid-template-columns: 1fr;
@@ -167,7 +192,18 @@ body {
     }
       .perfil-btn {
     display: none;
+      }
+    .logo{
+    order:-1;
+    margin:0 auto;
+    height:auto;
 }
+
+.logo img{
+    height:120px;
+}
+}
+    
 
     .profile-card {
         display: none;
@@ -198,14 +234,22 @@ body {
     .page {
         padding-bottom: 70px;
     }
-}
+
 
 /* ===================== */
 /* 📱 RESPONSIVE MÓVIL */
 /* ===================== */
 
-@media (max-width: 768px) {
+@media (max-width: 600px) {
+.logo{
+    order:-1;
+    margin:0 auto;
+    height:auto;
+}
 
+.logo img{
+    height:120px;
+}
     .menu,
     .footer {
         display: none;
@@ -247,3 +291,140 @@ body {
         font-size: 33px;
     }
 }
+/* ================================================= */
+/* LOGO HEADER */
+/* ================================================= */
+
+.logo-header{
+    height:60px;
+    width:auto;
+    object-fit:contain;
+}
+
+
+/* ================================================= */
+/* MENU IDIOMA */
+/* ================================================= */
+
+.lang-mobile{
+    display:none;
+    position:relative;
+}
+
+#toggleLang{
+    display:none;
+}
+
+.lang-mobile .icon{
+    font-size:20px;
+    background:#ffffff8f;
+    padding:6px 10px;
+    border-radius:50%;
+    cursor:pointer;
+}
+
+.menu-idioma{
+    position:absolute;
+    top:45px;
+    right:0;
+    background:#fff;
+    border-radius:14px;
+    box-shadow:0 6px 14px rgba(0,0,0,.2);
+    list-style:none;
+    display:none;
+    min-width:120px;
+}
+
+.menu-idioma li{
+    padding:8px 16px;
+    cursor:pointer;
+}
+
+#toggleLang:checked + .icon + .menu-idioma{
+    display:block;
+}
+
+
+/* ================================================= */
+/* TABLET + MOBILE HEADER COMPORTAMIENTO */
+/* ================================================= */
+
+@media(max-width:1024px){
+
+    #español{
+        display:none;
+    }
+
+    .lang-mobile{
+        display:block;
+    }
+    .actions{
+    order:3;
+    
+}
+
+.logo{
+    order:-1;
+    margin:0 auto;
+    height:auto;
+}
+
+    .topbar{
+        justify-content:flex-between;
+        gap:12px;
+    }
+
+    .login{
+        padding:5px 10px;
+        font-size:12px;
+       
+    }
+    .login{
+    padding:4px 10px;
+    font-size:12px;
+    border-radius:16px;
+   margin-left:-170px;
+}
+
+.lang-mobile .icon{
+    font-size:16px;
+    padding:5px 7px;
+    margin-left:150px;
+    
+    
+}
+}
+
+
+/* ================================================= */
+/* MOBILE EXTRA */
+/* ================================================= */
+
+@media(max-width:600px){
+
+    .logo-header{
+        height:42px;
+        position:absolute;
+        left:50%;
+        transform:translateX(-50%);
+    }
+
+}
+.topbar{
+    position:relative;
+}
+
+/* logo siempre izquierda */
+.logo-header{
+    margin-right:auto;
+    position:static !important;
+    transform:none !important;
+}
+
+/* evitar desplazamientos raros en móvil */
+@media(max-width:600px){
+    .logo-header{
+        margin-right:auto;
+    }
+}
+
