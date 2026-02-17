@@ -13,11 +13,7 @@
 <body>
     
     <header class="topbar">
-        <select id="español">
-            <option>Español</option>
-            <option>Ingles</option>
-            <option>Catalan</option>
-        </select>
+        <img src="logo_azul_transparente.png" class="logo-header">
         
         
         <nav class="menu">
@@ -29,7 +25,23 @@
         <div class="actions">
             
             <a href="login.html" class="login">Log in / Sign up</a>
-            <a href="perfil.html" class="login perfil-btn">Perfil</a>
+            
+        </div>
+        <select id="español">
+            <option>Español</option>
+            <option>Ingles</option>
+            <option>Catalan</option>
+        </select>
+        
+         <!-- MENU IDIOMA MOBILE (INSERTADO) -->
+        <div class="lang-mobile">
+            <input type="checkbox" id="toggleLang">
+            <label for="toggleLang" class="icon">🌐</label>
+            <ul class="menu-idioma">
+                <li>English</li>
+                <li>Català</li>
+                <li>Español</li>
+            </ul>
         </div>
     </header>
     
