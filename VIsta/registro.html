@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,14 +12,24 @@
 
 <body>
 
-  <div class="card">
+  <?php
 
+    $nombre = $_POST ['name'];
+    $email = $_POST ['email'];
+    $password = $_POST ['password'];
+    $tipo = $_POST ['tipo'];
     
 
-   
-    <form action="login.html">
+  ?>
+
+  <div class="card">
+
+
+
+
+    <form action="home.html">
       <h3 id="registro">Registrarse</h3>
-     
+
 
       <label for="name">Nombre</label>
       <input type="text" id="name" name="name">
@@ -31,17 +42,25 @@
 
       <label for="password_confir">Confirmar contraseña</label>
       <input type="password" id="password_confir" name="password_confir">
-      <a href="login.html">
-          <input type="submit" value="Crear cuenta">
-          
+      <label for="tipo">Tipo de usuario</label>
+      <!-- Se añade que tipo de usuario se esta registrando -->
+      <select name="tipo" id="tipo">
+        <option value="usuario">Usuario</option>
+        <option value="organizador">Organizador</option>
+      </select>
+      <a href="login.html">Ya tengo cuenta</a>
+
+      <a href="home.html">
+        <input type="submit" value="Crear cuenta">
+
       </a>
 
-      <a href="login.html">Ya tengo cuenta</a>
     </form>
 
-   
+
 
   </div>
 
 </body>
+
 </html>
