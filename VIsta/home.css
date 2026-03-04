@@ -23,7 +23,7 @@ body{
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
-    background-color:#99D9D9;
+    background-color:#99d9d9;
     padding:12px 32px;
     height:100px;
 }
@@ -273,7 +273,7 @@ nav.menu{
 }
 
 .card button:hover{
-    background-color:#7fcaca;
+    background-color:#99d9d9;
 }
 
 /* favorito */
@@ -402,7 +402,7 @@ nav.menu{
     position:fixed;
     bottom:0;
     width:100%;
-    background:#99D9D9;
+    background:#99d9d9;
     padding:12px 0;
     justify-content:space-around;
     font-size:22px;
