@@ -40,3 +40,5 @@ CREATE TABLE Asisten (
     CONSTRAINT fk_asisten_evento
     FOREIGN KEY (Id_Evento) REFERENCES Evento(Id_Evento)
 );
+
+/* */
