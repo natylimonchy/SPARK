@@ -16,10 +16,15 @@ CREATE TABLE Usuario (
     Correo VARCHAR(100) UNIQUE,
     Direccion VARCHAR(50),
     Id_organizador VARCHAR(50),
+    id_perfil INT,
 
     CONSTRAINT fk_organizador 
     FOREIGN KEY (Id_organizador) 
     REFERENCES Usuario(Nombre_Usuario)
+
+    CONSTRAINT fk_usuario_perfil
+    FOREIGN KEY (id_perfil)
+    REFERENCES perfiles(id_perfil)
 );
 
 CREATE TABLE Evento(
@@ -39,6 +44,12 @@ CREATE TABLE Asisten (
 
     CONSTRAINT fk_asisten_evento
     FOREIGN KEY (Id_Evento) REFERENCES Evento(Id_Evento)
+);
+
+CREATE TABLE perfiles (
+    id_perfil INT PRIMARY KEY AUTO_INCREMENT,
+    nombre_perfil VARCHAR(50),
+
 );
 
 /* */
