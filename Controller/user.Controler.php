@@ -2,44 +2,32 @@
 
 class User_Controler{
 
-    private $db;
-    public function __construct($database){
-        $this->db = $database;
-        session_start();
+    private $conn;
+    public function __construct(){
+        // Datos de conexión
+$host = "localhost";
+$usuario = "root";
+$password = "";
+$base_datos = "mi_base_datos";
+
+// Crear conexión
+$conexion = new mysqli($host, $usuario, $password, $base_datos);
+
+// Verificar conexión
+if ($conexion->connect_error) {
+    die("Error de conexión: " . $conexion->connect_error);
+}
+
+echo "Conexión exitosa";
+
+// Establecer charset UTF-8
+$conexion->set_charset("utf8mb4");
+
+// Cerrar conexión
+$conexion->close();
     }
    public function login($email, $password){
 
-    if (isset($_POST['user']) && $_POST['password'] !== "") {
-        $user = htmlspecialchars($_POST['user']);
-        $password = htmlspecialchars($_POST['password']);
-        if (isset($_POST['activo']))
-            $es_activo = 1;
-        $activo = htmlspecialchars($_POST['activo']);
-
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "Spark";
-
-        // Create connection
-        $conn = new mysqli($servername, $username, $password, $dbname);
-        // Check connection
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
-
-        $sql = "Select ";
-
-        if ($conn->query($sql) === TRUE) {
-            echo "New record created successfully";
-        } else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
-        }
-
-        $conn->close();
-    } else {
-        echo "<p>No has seleccionado ninguna opción</p>";
-    }
     }
 
     function logout(){
