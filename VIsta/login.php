@@ -34,7 +34,7 @@
           <label for="password">Contraseña</label>
           <input type="password" id="password" name="password" required>
 
-        <a class="link"href="password.html">¿Olvidaste tu contraseña?</a>
+        <a class="link"href="password.php">¿Olvidaste tu contraseña?</a>
         
         <button type="submit" name="action" value="login">Entrar</button>
         </form>

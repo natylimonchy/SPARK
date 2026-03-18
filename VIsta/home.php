@@ -123,7 +123,7 @@
     </div>
 
     <div class="info-right">
-       <a href="evento.html"><button>Ver más</button></a>
+       <a href="evento.php"><button>Ver más</button></a>
     </div>
 
 </div>
