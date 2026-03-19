@@ -1,3 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
 <?php
 
 class User_Controler{
@@ -8,7 +19,7 @@ class User_Controler{
 $host = "localhost";
 $usuario = "root";
 $password = "";
-$base_datos = "mi_base_datos";
+$base_datos = "spark";
 
 // Crear conexión
 $conexion = new mysqli($host, $usuario, $password, $base_datos);
@@ -39,3 +50,7 @@ $conexion->close();
 }
 
 ?> 
+
+
+</body>
+</html>
