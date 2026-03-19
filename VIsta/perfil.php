@@ -18,9 +18,9 @@
     <div class="logo">SPARK</div>
 
     <nav class="menu">
-            <a href="home.html">Home</a>
+            <a href="home.php">Home</a>
             <a href="https://www.google.com/maps">Mapa</a>
-            <a href="foro.html">Foro</a>
+            <a href="foro.php">Foro</a>
         </nav>
 
     <div class="topbar-actions">

@@ -17,14 +17,14 @@
         
         
         <nav class="menu">
-            <a href="home.html">Home</a>
+            <a href="home.php">Home</a>
             <a href="https://www.google.com/maps">Mapa</a>
-            <a href="foro.html">Foro</a>
+            <a href="foro.php">Foro</a>
         </nav>
         
         <div class="actions">
             
-            <a href="login.html" class="login">Log in / Sign up</a>
+            <a href="login.php" class="login">Log in / Sign up</a>
             <select id="español">
             <option>Español</option>
             <option>Ingles</option>
@@ -101,7 +101,7 @@
     </div>
 
     <div class="info-right">
-       <a href="evento.html"><button>Ver más</button></a>
+       <a href="evento.php"><button>Ver más</button></a>
     </div>
 
 </div>
@@ -155,10 +155,10 @@
     
     <!-- NAVBAR MÓVIL -->
 <nav class="mobile-nav">
-    <a href="home.html"><span>🏠</span></a>
+    <a href="home.php"><span>🏠</span></a>
     <a href="https://www.google.com/maps"><span>📍</span></a>
-    <a href="foro.html"><span>💬</span></a>
-    <a href="perfil.html"><span>👤</span></a>
+    <a href="foro.php"><span>💬</span></a>
+    <a href="perfil.php"><span>👤</span></a>
 </nav>
 
 </body>

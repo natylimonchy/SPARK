@@ -15,7 +15,7 @@
         <br><a href="login.html">Volver a iniciar sesión</a><br>
     
         <br>
-        <a href="login.html">
+        <a href="login.php">
 
             <input type="submit"  value="Enviar"> <br>
         </a>
