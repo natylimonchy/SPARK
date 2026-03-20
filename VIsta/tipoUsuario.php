@@ -16,7 +16,10 @@
         $tipo = $_POST ['tipo'];
 
         if($tipo == "organizador"){
-             header("Location: registro.php");
+             header("Location: registroAdmin.php");
+             exit();
+        } else {
+            header("Location: registroUsuario.php");
              exit();
         }
     }

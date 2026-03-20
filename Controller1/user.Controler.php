@@ -44,8 +44,18 @@ $conexion->close();
     function logout(){
 
     }
-    function register(){
+    function register($nombre, $email, $password, $ruta = null){
 
+    if ($ruta) {
+    $sql = "INSERT INTO usuarios (nombre, email, password, imagen)
+            VALUES ('$nombre', '$email', '$password', '$ruta')";
+  } else {
+    $sql = "INSERT INTO usuarios (nombre, email, password)
+            VALUES ('$nombre', '$email', '$password')";
+  }
+
+  return $this->conn->query($sql);
+ 
     }
 }
 
