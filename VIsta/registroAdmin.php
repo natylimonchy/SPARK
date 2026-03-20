@@ -13,21 +13,23 @@
 <body>
 
   <?php
+  require_once "user.Controller.php";
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    
+
     $nombre = $_POST['name'];
     $email = $_POST['email'];
     $password = $_POST['password'];
+   
 
     $nombreImg = uniqid() . "_" . $_FILES['imagen']['name'];
     $ruta = "uploads/" . $nombreImg;
 
     move_uploaded_file($_FILES['imagen']['tmp_name'], $ruta);
 
-   
+    $user = new User_Controler();
+    $user->register($nombre, $email, $password, $ruta);
 
-    $conn->query($sql);
-
+    
 
     header("Location: home.php");
     exit();
@@ -36,7 +38,7 @@
 
   <div class="card">
 
-    <form action="user.Controller.php" method="POST" enctype="multipart/form-data">
+    <form action="" method="POST" enctype="multipart/form-data">
       <h3 id="registro">Registrarse</h3>
 
       <label for="name">Nombre</label>
