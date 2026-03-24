@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+  <title>Document</title>
 </head>
+
 <body>
-     <?php
+  <?php
+  require_once __DIR__ . "/../Controller1/user.Controler.php";
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
@@ -20,13 +24,10 @@
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    $nombreImg = uniqid() . "_" . $_FILES['imagen']['name'];
-    $ruta = "uploads/" . $nombreImg;
+   
 
-    move_uploaded_file($_FILES['imagen']['tmp_name'], $ruta);
-
-    $sql = "INSERT INTO usuarios (nombre, email, imagen)
-    VALUES ('$nombre', '$email', '$ruta', '$password')";
+    $sql = "INSERT INTO usuarios (nombre, email, password)
+    VALUES ('$nombre', '$email', '$password')";
 
     $conn->query($sql);
 
@@ -47,10 +48,7 @@
       <label for="email">Email</label>
       <input type="email" id="email" name="email" required>
 
-      <label>Foto de perfil</label>
-      <input type="file" name="imagen" required>
-
-      <img id="preview" src="" style="display:none; width:120px; margin-top:10px; border-radius:10px;">
+    
 
 
       <label for="password">Contraseña</label>
@@ -66,4 +64,5 @@
 
   </div>
 </body>
+
 </html>

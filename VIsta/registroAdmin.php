@@ -13,7 +13,7 @@
 <body>
 
   <?php
-  require_once "user.Controller.php";
+  require_once __DIR__ . "/../Controller1/user.Controler.php";
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $nombre = $_POST['name'];
