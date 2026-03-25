@@ -19,10 +19,10 @@ class User_Controler{
     }
     function register($nombre, $email, $password, $ruta = null){
      if ($ruta) {
-    $sql = "INSERT INTO usuarios (nombre, email, password, imagen)
+    $sql = "INSERT INTO Usuario (Nombre_Usuario, Correo, Contraseña, Imagen)
             VALUES ('$nombre', '$email', '$password', '$ruta')";
   } else {
-    $sql = "INSERT INTO usuarios (nombre, email, password)
+    $sql = "INSERT INTO Usuario (Nombre_Usuario, Correo, Contraseña)
             VALUES ('$nombre', '$email', '$password')";
   }
 
