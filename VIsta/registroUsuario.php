@@ -14,26 +14,26 @@
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
-    $conn = new mysqli("localhost", "root", "", "tu_base_datos");
+  $name = $_POST["name"];
+  $email = $_POST["email"]; 
+  $password = $_POST["password"];
+  $password_confir = $_POST["password_confir"];
 
-    if ($conn->connect_error) {
-      die("Error de conexión");
+  if ($password !== $password_confir) {
+    echo "Las contraseñas no coinciden.";
+  } else {
+    $user_Controler = new User_Controler();
+    if ($user_Controler->register($name, $email, $password)) {
+      echo "Registro exitoso.";
+    } else {
+      echo "Error al registrar el usuario.";
     }
-
-    $nombre = $_POST['name'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+   
 
    
 
-    $sql = "INSERT INTO usuarios (nombre, email, password)
-    VALUES ('$nombre', '$email', '$password')";
-
-    $conn->query($sql);
-
-
-    header("Location: home.php");
-    exit();
+   
+  }
   }
   ?>
 
