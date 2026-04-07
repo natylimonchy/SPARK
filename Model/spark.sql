@@ -20,7 +20,7 @@ CREATE TABLE Usuario (
 
     CONSTRAINT fk_organizador 
     FOREIGN KEY (Id_organizador) 
-    REFERENCES Usuario(Nombre_Usuario)
+    REFERENCES Usuario(Nombre_Usuario),
 
     CONSTRAINT fk_usuario_perfil
     FOREIGN KEY (id_perfil)
@@ -48,11 +48,9 @@ CREATE TABLE Asisten (
 
 CREATE TABLE perfiles (
     id_perfil INT PRIMARY KEY AUTO_INCREMENT,
-    nombre_perfil VARCHAR(50),
+    nombre_perfil VARCHAR(50)
 
 );
 
-
-ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '';
-FLUSH PRIVILEGES;
+SET PASSWORD FOR 'root'@'localhost' = PASSWORD('');
 /* */
