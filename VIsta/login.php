@@ -2,11 +2,11 @@
 // UserController.php
 
 session_start();
-require_once '../model/UserModel.php'; // Asegúrate de que la ruta sea correcta
+require_once '../Controller1/user.Controler.php'; // Asegúrate de que la ruta sea correcta
 
 $user_Controler = new User_Controler();
 
-if ($_POST['action'] == 'login') {
+if (isset($_POST['action']) && $_POST['action'] == 'login') {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
@@ -16,11 +16,11 @@ if ($_POST['action'] == 'login') {
         $_SESSION['user_id'] = $user['ID']; // Asumiendo que la columna de ID se llama 'ID'
         $_SESSION['user_email'] = $user['Correo'];
         // Agrega aquí cualquier otra información del usuario que necesites en la sesión
-        header('Location: ../dashboard.php'); // Cambia a la página principal de tu sitio
+        header('Location: home.php'); // Cambia a la página principal de tu sitio
         exit();
     } else {
         // Opcional: puedes pasar un mensaje de error
-        header('Location: ../login.php?error=1');
+        header('Location: login.php?error=1');
         exit();
     }
 }
@@ -57,7 +57,7 @@ if ($_POST['action'] == 'login') {
       <div class="card">
         <h2>Iniciar sesión</h2>
         <!-- FORMULARIO (funcional)-->
-       <form action="../controller/UserController.php" method="POST">
+       <form action="login.php" method="POST">
 
           <label for="email">Email</label>
           <input type="email" id="email" name="email" required>
