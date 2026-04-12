@@ -52,5 +52,7 @@ CREATE TABLE perfiles (
 
 );
 
+
+
 SET PASSWORD FOR 'root'@'localhost' = PASSWORD('');
 /* */

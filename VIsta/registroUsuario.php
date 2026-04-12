@@ -18,22 +18,23 @@
   $email = $_POST["email"]; 
   $password = $_POST["password"];
   $password_confir = $_POST["password_confir"];
+  $usuario = 1;
 
   if ($password !== $password_confir) {
     echo "Las contraseñas no coinciden.";
   } else {
     $user_Controler = new User_Controler();
-    if ($user_Controler->register($name, $email, $password)) {
+    if ($user_Controler->register($name, $email, $password, null,$usuario)) {
       echo "Registro exitoso.";
+      header("Location: login.php");
+      exit();
+
     } else {
       echo "Error al registrar el usuario.";
     }
-   
-
-   
-
-   
   }
+  header("Location: login.php");
+    exit();
   }
   ?>
 
@@ -59,7 +60,7 @@
 
       <a href="login.php">Ya tengo cuenta</a>
 
-      <input type="submit" value="Crear cuenta">
+      <input type="submit" value="Crear cuenta" >
     </form>
 
   </div>

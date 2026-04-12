@@ -23,15 +23,26 @@
 
     $nombreImg = uniqid() . "_" . $_FILES['imagen']['name'];
     $ruta = "uploads/" . $nombreImg;
+    $usuario = 2;
 
     move_uploaded_file($_FILES['imagen']['tmp_name'], $ruta);
 
-    $user = new User_Controler();
-    $user->register($nombre, $email, $password, $ruta);
+    if ($password !== $password_confir) {
+    echo "Las contraseñas no coinciden.";
+  } else {
+    $user_Controler = new User_Controler();
+    if ($user_Controler->register($name, $email, $password, $ruta, $usuario)) {
+      echo "Registro exitoso.";
+      header("Location: login.php");
+      exit();
 
+    } else {
+      echo "Error al registrar el usuario.";
+    }
+  }
     
 
-    header("Location: home.php");
+    header("Location: login.php");
     exit();
   }
   ?>
