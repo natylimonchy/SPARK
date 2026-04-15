@@ -13,7 +13,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'login') {
     $user = $user_Controler->login($email, $password);
 
     if ($user) {
-        $_SESSION['user_id'] = $user['ID']; // Asumiendo que la columna de ID se llama 'ID'
+        $_SESSION['user_id'] = $user['Nombre_Usuario']; 
         $_SESSION['user_email'] = $user['Correo'];
         // Agrega aquí cualquier otra información del usuario que necesites en la sesión
         header('Location: home.php'); // Cambia a la página principal de tu sitio

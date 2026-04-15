@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -24,8 +25,12 @@
     </nav>
 
     <div class="actions">
-        <a href="login.php" class="login">Log in / Sign up</a>
-        <a href="perfil.php" class="login perfil-btn">Perfil</a>
+        <?php if (isset($_SESSION['user_id'])): ?>
+            <a href="perfil.php" class="login">Perfil</a>
+            <a href="logout.php" class="login">Cerrar sesión</a>
+        <?php else: ?>
+            <a href="login.php" class="login">Log in / Sign up</a>
+        <?php endif; ?>
     </div>
     <select id="español">
             <option>Español</option>

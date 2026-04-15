@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -23,8 +24,14 @@
         </nav>
         
         <div class="actions">
-            
+          
+        <?php if (isset($_SESSION['user_id'])): ?>
+            <a href="perfil.php" class="login">Perfil</a>
+            <a href="logout.php" class="login">Cerrar sesión</a>
+             
+        <?php else: ?>
             <a href="login.php" class="login">Log in / Sign up</a>
+        <?php endif; ?>
             <select id="español">
             <option>Español</option>
             <option>Ingles</option>
