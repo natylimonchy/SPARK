@@ -15,6 +15,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'login') {
     if ($user) {
         $_SESSION['user_id'] = $user['Nombre_Usuario']; 
         $_SESSION['user_email'] = $user['Correo'];
+        $_SESSION['user_role'] = $user['id_usuario'];
         // Agrega aquí cualquier otra información del usuario que necesites en la sesión
         header('Location: home.php'); // Cambia a la página principal de tu sitio
         exit();
