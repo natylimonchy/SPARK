@@ -31,10 +31,10 @@
 
     } else {
       echo "Error al registrar el usuario.";
+      header("Location: login.php");
+        exit();
     }
   }
-  header("Location: login.php");
-    exit();
   }
   ?>
 

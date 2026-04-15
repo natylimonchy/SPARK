@@ -16,16 +16,24 @@
   require_once __DIR__ . "/../Controller1/user.Controler.php";
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $nombre = $_POST['name'];
+    $name = $_POST['name']; 
     $email = $_POST['email'];
     $password = $_POST['password'];
-   
+    $password_confir = $_POST["password_confir"];
+    $usuario = 2; // Rol por defecto
+    $ruta = "";   // Inicializamos la variable
 
-    $nombreImg = uniqid() . "_" . $_FILES['imagen']['name'];
-    $ruta = "uploads/" . $nombreImg;
-    $usuario = 2;
-
-    move_uploaded_file($_FILES['imagen']['tmp_name'], $ruta);
+    // 2. Manejo de la imagen (Descomentado para que funcione)
+    if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] == 0) {
+        $nombreImg = uniqid() . "_" . $_FILES['imagen']['name'];
+        $ruta = "uploads/" . $nombreImg;
+        
+        // Crear carpeta si no existe
+        if (!is_dir('uploads')) {
+            mkdir('uploads', 0777, true);
+        }
+        move_uploaded_file($_FILES['imagen']['tmp_name'], $ruta);
+    }
 
     if ($password !== $password_confir) {
     echo "Las contraseñas no coinciden.";
@@ -38,12 +46,13 @@
 
     } else {
       echo "Error al registrar el usuario.";
+      header("Location: login.php");
+      exit();
     }
   }
     
 
-    header("Location: login.php");
-    exit();
+    
   }
   ?>
 
