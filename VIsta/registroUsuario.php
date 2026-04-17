@@ -10,7 +10,9 @@
 
 <body>
   <?php
-  require_once __DIR__ . "/../Controller1/user.Controler.php";
+
+require_once __DIR__ . "/../Controller1/user.Controler.php";
+$mensaje = "";
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
@@ -24,19 +26,32 @@
     echo "Las contraseñas no coinciden.";
   } else {
     $user_Controler = new User_Controler();
-    if ($user_Controler->register($name, $email, $password, null,$usuario)) {
-      echo "Registro exitoso.";
-      header("Location: login.php");
-      exit();
+    $resultado = $user_Controler->register($name, $email, $password, null, $usuario);
+    var_dump($resultado);
+exit();
 
-    } else {
-      echo "Error al registrar el usuario.";
-      header("Location: login.php");
-        exit();
-    }
+if ($resultado == "ok") {
+  echo "<script>alert('Registro exitoso'); window.location='login.php';</script>";
+  exit();
+}
+
+if ($resultado == "usuario_existe") {
+  $mensaje = "Ese nombre de usuario ya existe";
+}
+
+if ($resultado == "correo_existe") {
+ $mensaje = "Ese correo ya está registrado";
+}
+
+if ($resultado == "error") {
+$mensaje = "Error al registrar";
+}
   }
   }
   ?>
+<?php if ($mensaje): ?>
+  <p style="color:red;"><?php echo $mensaje; ?></p>
+<?php endif; ?>
 
   <div class="card">
 
