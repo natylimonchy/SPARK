@@ -11,6 +11,9 @@ class UserModel {
 
     public function register($nombre, $email, $password, $ruta = null, $usuario) {
 
+        // IMPORTANTE: Para que esto funcione con "Imagen", debes ejecutar en tu SQL:
+        // ALTER TABLE Usuario ADD COLUMN Imagen VARCHAR(255);
+        
         if ($ruta) {
             $sql = "INSERT INTO Usuario (Nombre_Usuario, Correo, Contraseña, Imagen, id_perfil)
                     VALUES ('$nombre', '$email', '$password', '$ruta', $usuario)";
@@ -23,11 +26,17 @@ class UserModel {
     }
 
     public function login($email, $password) {
+        // Usamos Contraseña con 'ñ' porque así está en tu script de base de datos
         $sql = "SELECT * FROM Usuario 
                 WHERE Correo='$email' AND Contraseña='$password'";
 
         $result = $this->conn->query($sql);
-        return $result->fetch_assoc();
+        
+        if ($result && $result->num_rows > 0) {
+            return $result->fetch_assoc();
+        }
+        
+        return false;
     }
 }
 ?>

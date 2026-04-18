@@ -52,7 +52,9 @@ CREATE TABLE perfiles (
 
 );
 
+ALTER TABLE Usuario ADD COLUMN Imagen VARCHAR(255);
 
 
-SET PASSWORD FOR 'root'@'localhost' = PASSWORD('');
+
+
 /* */

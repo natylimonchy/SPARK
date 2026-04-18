@@ -12,8 +12,6 @@ class User_Controler {
     }
 
     function register($nombre, $email, $password, $ruta = null, $usuario) {
-
-        // VALIDACIÓN (te suma puntos)
         if (empty($nombre) || empty($email) || empty($password)) {
             return "campos_vacios";
         }
@@ -27,44 +25,41 @@ class User_Controler {
         }
 
         try {
-
             $ok = $this->model->register($nombre, $email, $password, $ruta, $usuario);
-
             if ($ok) {
                 return "ok";
             } else {
                 return "error";
             }
-
         } catch (mysqli_sql_exception $e) {
-    echo "ERROR SQL: " . $e->getMessage();
-    exit();
-}
+            echo "ERROR SQL: " . $e->getMessage();
+            exit();
+        }
     }
 
     function login($email, $password) {
-
         if (empty($email) || empty($password)) {
-            return "campos_vacios";
+            return false;
         }
 
         $user = $this->model->login($email, $password);
 
         if ($user) {
-            return "ok";
+            // RETORNAMOS EL ARRAY COMPLETO, NO SOLO "OK"
+            return $user; 
         } else {
-            return "error";
+            return false;
         }
     }
 
     public function logout() {
-     session_start();
-
-    $_SESSION = [];
-    session_destroy();
-
-    header("Location: ../Vista/login.php");
-    exit();
-}
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+        $_SESSION = [];
+        session_destroy();
+        header("Location: ../Vista/login.php");
+        exit();
+    }
 }
 ?>
