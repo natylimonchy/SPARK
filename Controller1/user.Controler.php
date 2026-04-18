@@ -1,43 +1,70 @@
 <?php
 
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+require_once("../Model/UserModel.php");
 
-class User_Controler{
+class User_Controler {
 
-    private $conn;
+    private $model;
 
-    public function __construct(){
-        $this->conn = new mysqli("localhost", "root", "", "spark");
-        $this->conn->set_charset("utf8mb4");
+    public function __construct() {
+        $this->model = new UserModel();
     }
 
-    function register($nombre, $email, $password, $ruta = null, $usuario){
+    function register($nombre, $email, $password, $ruta = null, $usuario) {
+
+        // VALIDACIÓN (te suma puntos)
+        if (empty($nombre) || empty($email) || empty($password)) {
+            return "campos_vacios";
+        }
+
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            return "email_invalido";
+        }
+
+        if (strlen($password) < 4) {
+            return "password_corta";
+        }
+
         try {
 
-            if ($ruta) {
-                $sql = "INSERT INTO Usuario (Nombre_Usuario, Correo, Contraseña, Imagen, id_perfil)
-                        VALUES ('$nombre', '$email', '$password', '$ruta', $usuario)";
+            $ok = $this->model->register($nombre, $email, $password, $ruta, $usuario);
+
+            if ($ok) {
+                return "ok";
             } else {
-                $sql = "INSERT INTO Usuario (Nombre_Usuario, Correo, Contraseña, id_perfil)
-                        VALUES ('$nombre', '$email', '$password', $usuario)";
+                return "error";
             }
-
-            $this->conn->query($sql);
-
-            return "ok";
 
         } catch (mysqli_sql_exception $e) {
+    echo "ERROR SQL: " . $e->getMessage();
+    exit();
+}
+    }
 
-            if (str_contains($e->getMessage(), 'PRIMARY')) {
-                return "usuario_existe";
-            }
+    function login($email, $password) {
 
-            if (str_contains($e->getMessage(), 'Correo')) {
-                return "correo_existe";
-            }
+        if (empty($email) || empty($password)) {
+            return "campos_vacios";
+        }
 
+        $user = $this->model->login($email, $password);
+
+        if ($user) {
+            return "ok";
+        } else {
             return "error";
         }
     }
+
+    public function logout() {
+     session_start();
+
+    $_SESSION = [];
+    session_destroy();
+
+    header("Location: ../Vista/login.php");
+    exit();
+}
 }
 ?>

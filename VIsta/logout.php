@@ -1,8 +1,6 @@
-<?php session_start(); 
-require_once '../Controller1/user.Controler.php'; // Asegúrate de que la ruta sea correcta
-$controller = new User_Controler();
-$controller->logout();
+<?php
+require_once __DIR__ . "/../Controller1/user.Controler.php";
 
-header('Location: home.php');
-exit();
+$user_Controler = new User_Controler();
+$user_Controler->logout();
 ?>
