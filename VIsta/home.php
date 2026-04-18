@@ -1,4 +1,10 @@
-<?php session_start(); ?>
+<?php
+session_start();
+if (!isset($_SESSION['user_email'])) {
+    header("Location: login.php");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -12,35 +18,35 @@
 </head>
 
 <body>
-    
+
     <header class="topbar">
         <img src="recursos/logo_azul_transparente.png" class="logo-header">
-        
-        
+
+
         <nav class="menu">
             <a href="home.php">Home</a>
             <a href="https://www.google.com/maps">Mapa</a>
             <a href="foro.php">Foro</a>
         </nav>
-        
+
         <div class="actions">
-          
-        <?php if (isset($_SESSION['user_id'])): ?>
-            <a href="perfil.php" class="login">Perfil</a>
-            <a href="logout.php" class="login">Cerrar sesión</a>
-             
-        <?php else: ?>
-            <a href="login.php" class="login">Log in / Sign up</a>
-        <?php endif; ?>
+
+            <?php if (isset($_SESSION['user_id'])): ?>
+                <a href="perfil.php" class="login">Perfil</a>
+                <a href="logout.php" class="login">Cerrar sesión</a>
+
+            <?php else: ?>
+                <a href="login.php" class="login">Log in / Sign up</a>
+            <?php endif; ?>
             <select id="español">
-            <option>Español</option>
-            <option>Ingles</option>
-            <option>Catalan</option>
-        </select>
+                <option>Español</option>
+                <option>Ingles</option>
+                <option>Catalan</option>
+            </select>
         </div>
-        
-        
-         <!-- MENU IDIOMA MOBILE (INSERTADO) -->
+
+
+        <!-- MENU IDIOMA MOBILE (INSERTADO) -->
         <div class="lang-mobile">
             <input type="checkbox" id="toggleLang">
             <label for="toggleLang" class="icon">🌐</label>
@@ -51,16 +57,16 @@
             </ul>
         </div>
     </header>
-    
+
     <section class="search">
         <input type="search" placeholder="Buscar eventos...">
     </section>
-    
+
     <div class="layout">
         <div class="logo">
-            <img id="mascota"src="recursos/mascota_mirada.png">
+            <img id="mascota" src="recursos/mascota_mirada.png">
         </div>
-        
+
         <!-- FILTROS -->
         <aside class="filters">
             <h3>Filtros</h3>
@@ -92,81 +98,81 @@
         <main class="content">
 
             <h2>Recomendados</h2>
-<div class="cards recomendados">
+            <div class="cards recomendados">
 
-<div class="card">
-    <div class="fav">♡</div>
+                <div class="card">
+                    <div class="fav">♡</div>
 
-    <img src="recursos/icono_imagen.avif" alt="Evento">
+                    <img src="recursos/icono_imagen.avif" alt="Evento">
 
-    <div class="card-info">
-    
-    <div class="info-left">
-        <h4>Concierto Indie Night</h4>
-        <div class="rating">★★★★☆</div>
-        <p class="meta">Centro · 12€ · Música</p>
-    </div>
+                    <div class="card-info">
 
-    <div class="info-right">
-       <a href="evento.php"><button>Ver más</button></a>
-    </div>
+                        <div class="info-left">
+                            <h4>Concierto Indie Night</h4>
+                            <div class="rating">★★★★☆</div>
+                            <p class="meta">Centro · 12€ · Música</p>
+                        </div>
 
-</div>
+                        <div class="info-right">
+                            <a href="evento.php"><button>Ver más</button></a>
+                        </div>
 
-</div>
-
-
-<div class="card">
-    <div class="fav">♡</div>
-
-    <img src="recursos/icono_imagen.avif" alt="Evento">
-
-    <div class="card-info">
-    
-    <div class="info-left">
-        <h4>Concierto Indie Night</h4>
-        <div class="rating">★★★★☆</div>
-        <p class="meta">Centro · 12€ · Música</p>
-    </div>
-
-    <div class="info-right">
-       <a href="evento.php"><button>Ver más</button></a>
-    </div>
-
-</div>
-
-</div>
-
-</div>
-
-                    <h2>Eventos por categoría</h2>
-                    <div class="cards grid">
-                        <div class="card"></div>
-                        <div class="card"></div>
-                        <div class="card"></div>
                     </div>
-                    <div class="cards grid">
-                        <div class="card"></div>
-                        <div class="card"></div>
-                        <div class="card"></div>
+
+                </div>
+
+
+                <div class="card">
+                    <div class="fav">♡</div>
+
+                    <img src="recursos/icono_imagen.avif" alt="Evento">
+
+                    <div class="card-info">
+
+                        <div class="info-left">
+                            <h4>Concierto Indie Night</h4>
+                            <div class="rating">★★★★☆</div>
+                            <p class="meta">Centro · 12€ · Música</p>
+                        </div>
+
+                        <div class="info-right">
+                            <a href="evento.php"><button>Ver más</button></a>
+                        </div>
+
                     </div>
-                    <div class="cards grid">
-                        <div class="card"></div>
-                        <div class="card"></div>
-                        <div class="card"></div>
-                    </div>
+
+                </div>
+
+            </div>
+
+            <h2>Eventos por categoría</h2>
+            <div class="cards grid">
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+            </div>
+            <div class="cards grid">
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+            </div>
+            <div class="cards grid">
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+            </div>
 
         </main>
 
     </div>
-    
+
     <!-- NAVBAR MÓVIL -->
-<nav class="mobile-nav">
-    <a href="home.php"><span>🏠</span></a>
-    <a href="https://www.google.com/maps"><span>📍</span></a>
-    <a href="foro.php"><span>💬</span></a>
-    <a href="perfil.php"><span>👤</span></a>
-</nav>
+    <nav class="mobile-nav">
+        <a href="home.php"><span>🏠</span></a>
+        <a href="https://www.google.com/maps"><span>📍</span></a>
+        <a href="foro.php"><span>💬</span></a>
+        <a href="perfil.php"><span>👤</span></a>
+    </nav>
 
 </body>
 

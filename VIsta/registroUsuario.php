@@ -1,84 +1,74 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
- 
-  <title>Document</title>
+  <title>Registro Usuario</title>
 </head>
 
 <body>
-  <?php
 
+<?php
 require_once __DIR__ . "/../Controller1/user.Controler.php";
+
 $mensaje = "";
-  if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-  $name = $_POST["name"];
-  $email = $_POST["email"]; 
-  $password = $_POST["password"];
-  $password_confir = $_POST["password_confir"];
-  $usuario = 1;
+    $name = $_POST["name"];
+    $email = $_POST["email"]; 
+    $password = $_POST["password"];
+    $password_confir = $_POST["password_confir"];
+    $usuario = 1;
 
-  if ($password !== $password_confir) {
-    echo "Las contraseñas no coinciden.";
-  } else {
-    $user_Controler = new User_Controler();
-    $resultado = $user_Controler->register($name, $email, $password, null, $usuario);
-    var_dump($resultado);
-exit();
+    if ($password !== $password_confir) {
+        $mensaje = "Las contraseñas no coinciden.";
+    } else {
+        $user_Controler = new User_Controler();
+        $resultado = $user_Controler->register($name, $email, $password, null, $usuario);
 
-if ($resultado == "ok") {
-  echo "<script>alert('Registro exitoso'); window.location='login.php';</script>";
-  exit();
+        if ($resultado == "ok") {
+            header("Location: login.php");
+            exit();
+        }
+
+        if ($resultado == "usuario_existe") {
+            $mensaje = "Ese nombre de usuario ya existe";
+        }
+
+        if ($resultado == "correo_existe") {
+            $mensaje = "Ese correo ya está registrado";
+        }
+
+        if ($resultado == "campos_vacios") {
+            $mensaje = "Completa todos los campos";
+        }
+
+        if ($resultado == "email_invalido") {
+            $mensaje = "Email inválido";
+        }
+
+        if ($resultado == "password_corta") {
+            $mensaje = "La contraseña debe tener al menos 4 caracteres";
+        }
+
+        if ($resultado == "error") {
+            $mensaje = "Error al registrar";
+        }
+    }
 }
+?>
 
-if ($resultado == "usuario_existe") {
-  $mensaje = "Ese nombre de usuario ya existe";
-}
-
-if ($resultado == "correo_existe") {
- $mensaje = "Ese correo ya está registrado";
-}
-
-if ($resultado == "error") {
-$mensaje = "Error al registrar";
-}
-  }
-  }
-  ?>
 <?php if ($mensaje): ?>
-  <p style="color:red;"><?php echo $mensaje; ?></p>
+    <p style="color:red;"><?php echo $mensaje; ?></p>
 <?php endif; ?>
 
-  <div class="card">
+<form method="POST">
+    <input type="text" name="name" placeholder="Nombre" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <input type="password" name="password" placeholder="Contraseña" required>
+    <input type="password" name="password_confir" placeholder="Confirmar" required>
+    <button type="submit">Registrar</button>
+</form>
 
-    <form action="" method="POST" enctype="multipart/form-data">
-      <h3 id="registro">Registrarse</h3>
-
-      <label for="name">Nombre</label>
-      <input type="text" id="name" name="name" required>
-
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" required>
-
-    
-
-
-      <label for="password">Contraseña</label>
-      <input type="password" id="password" name="password" required>
-
-      <label for="password_confir">Confirmar contraseña</label>
-      <input type="password" id="password_confir" name="password_confir" required>
-
-      <a href="login.php">Ya tengo cuenta</a>
-
-      <input type="submit" value="Crear cuenta" >
-    </form>
-
-  </div>
 </body>
-
 </html>
