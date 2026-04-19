@@ -29,11 +29,41 @@ class User_Controler {
             if ($ok) {
                 return "ok";
             } else {
+                // Revisar si hay error de duplicidad en la conexión
+                $errorMsg = $this->model->getLastError();
+                error_log("DEBUG Controller: register() retornó false. Error MySQL: " . $errorMsg);
+                
+                if (strpos($errorMsg, 'Duplicate entry') !== false) {
+                    if (strpos($errorMsg, 'Nombre_Usuario') !== false) {
+                        return "usuario_existe";
+                    }
+                    if (strpos($errorMsg, 'Correo') !== false) {
+                        return "correo_existe";
+                    }
+                    return "usuario_o_email_duplicado";
+                }
                 return "error";
             }
         } catch (mysqli_sql_exception $e) {
-            echo "ERROR SQL: " . $e->getMessage();
-            exit();
+            // DEBUG: ver qué error capturó
+            error_log("DEBUG Controller: Exception capturada: " . $e->getMessage());
+            
+            // Detectar específicamente cuál campo está duplicado
+            $errorMsg = $e->getMessage();
+            
+            if (strpos($errorMsg, 'Duplicate entry') !== false) {
+                // Detectar si es el nombre de usuario duplicado
+                if (strpos($errorMsg, 'Nombre_Usuario') !== false) {
+                    return "usuario_existe";
+                }
+                // Detectar si es el correo duplicado
+                if (strpos($errorMsg, 'Correo') !== false) {
+                    return "correo_existe";
+                }
+                // Si ambos o no se puede determinar
+                return "usuario_o_email_duplicado";
+            }
+            return "error_base_datos";
         }
     }
 

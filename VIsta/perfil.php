@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    header('Location: login.php');
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -23,13 +31,20 @@
             <a href="foro.php">Foro</a>
         </nav>
 
-    <div class="topbar-actions">
-      <button class="icon-btn">
-        <img src="recursos/config.png" alt="Configuración">
-      </button>
-      <button class="icon-btn">
-        <img src="recursos/bell.png" alt="Notificaciones">
-      </button>
+    <div class="actions">
+
+        <?php if (isset($_SESSION['user_id'])): ?>
+            
+            <a href="logout.php" class="login">Cerrar sesión</a>
+
+        <?php else: ?>
+            <a href="login.php" class="login">Log in / Sign up</a>
+        <?php endif; ?>
+        <select id="español">
+            <option>Español</option>
+            <option>Ingles</option>
+            <option>Catalan</option>
+        </select>
     </div>
   </header>
 

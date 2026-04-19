@@ -18,7 +18,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'login') {
     $_SESSION['user_id'] = $user['Nombre_Usuario'];
     $_SESSION['user_email'] = $user['Correo'];
     $_SESSION['user_role'] = $user['id_usuario'];
-    header('Location: home.php');
+    header('Location: perfil.php');
     exit();
   } else {
     $error_mensaje = "Correo o contraseña incorrectos.";

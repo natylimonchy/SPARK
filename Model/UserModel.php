@@ -22,6 +22,10 @@ class UserModel {
         return $this->conn->query($sql);
     }
 
+    public function getLastError() {
+        return $this->conn->error;
+    }
+
     public function login($email, $password) {
         $sql = "SELECT * FROM Usuario 
                 WHERE Correo='$email' AND Contraseña='$password'";

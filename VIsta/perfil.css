@@ -392,3 +392,44 @@ main{
     align-items:stretch;
   }
 }
+
+/* ================================================= */
+/* ESTILOS PARA BOTONES DE SESIÓN (COPIADOS DE HOME.CSS) */
+/* ================================================= */
+
+.actions{
+   display:flex;
+    justify-content:flex-end;
+    gap:12px;
+    font-weight:640;
+    font-size:13px;
+    margin-left:auto;
+}
+
+.actions a.login{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    background-color: #f4592f ;
+    color: #000000ba ;
+    text-decoration: none ;
+    font-weight: 600;
+    transition: background-color 0.2s ease;
+}
+
+.actions a.login:hover{
+    background-color: #ff7a4b ;
+}
+
+#español{
+    border:none;
+    padding:5px 6px;
+    border-radius:20px;
+    background-color:#ffffff8f;
+    cursor:pointer;
+    padding-left:3px;
+}
+

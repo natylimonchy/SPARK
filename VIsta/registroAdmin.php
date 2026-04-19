@@ -37,8 +37,18 @@
             $resultado = $user_Controler->register($name, $email, $password, $ruta, $usuario);
 
             if ($resultado == "ok") {
-                header("Location: login.php");
-                exit();
+              
+          if (session_status() === PHP_SESSION_NONE) {
+                session_start();
+            }
+
+            
+            $_SESSION['user_email'] = $email; 
+            $_SESSION['user_name'] = $name;   
+            $_SESSION['user_id'] = 1; 
+            
+            header("Location: home.php");
+            exit();
             } else {
                 echo "<p class='error-msg'>Error: " . $resultado . "</p>";
             }
