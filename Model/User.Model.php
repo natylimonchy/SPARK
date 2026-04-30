@@ -5,35 +5,48 @@ class UserModel {
     private $conn;
 
     public function __construct() {
-        $this->conn = new mysqli("localhost", "root", "", "spark");
-        $this->conn->set_charset("utf8mb4");
-    }
+        try {
+        $this->conn = new PDO("mysql:host=localhost;dbname=spark", "root", "");
+        // Configurar PDO para lanzar excepciones en caso de error
+            
+        $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch (PDOException $e) {
+            echo "Error" . $e->getMessage();
+            
+        }
+        }
 
-    public function register($nombre, $email, $password, $ruta = null, $usuario) {
+    public function register($nombre, $email, $password,$usuario , $ruta = null) {
 
         // IMPORTANTE: Para que esto funcione con "Imagen", debes ejecutar en tu SQL:
         // ALTER TABLE Usuario ADD COLUMN Imagen VARCHAR(255);
         
         if ($ruta) {
-            $sql = "INSERT INTO Usuario (Nombre_Usuario, Correo, Contraseña, Imagen, id_perfil)
-                    VALUES ('$nombre', '$email', '$password', '$ruta', $usuario)";
+            $sql = "INSERT INTO Usuario (Nombre_Usuario, Correo, Contraseña, id_perfil, Imagen)
+                    VALUES (?, ?, ?, ?, ?)";
         } else {
             $sql = "INSERT INTO Usuario (Nombre_Usuario, Correo, Contraseña, id_perfil)
-                    VALUES ('$nombre', '$email', '$password', $usuario)";
+                    VALUES (?, ?, ?, ?)";
         }
 
-        return $this->conn->query($sql);
+        $stmt = $this->conn->prepare($sql);
+        if ($ruta) {
+            return $stmt->execute([$nombre, $email, $password, $usuario, $ruta]);
+        } else {
+            return $stmt->execute([$nombre, $email, $password, $usuario]);
+        }
     }
 
     public function login($email, $password) {
         // Usamos Contraseña con 'ñ' porque así está en tu script de base de datos
         $sql = "SELECT * FROM Usuario 
-                WHERE Correo='$email' AND Contraseña='$password'";
+                WHERE Correo=? AND Contraseña=?";
 
-        $result = $this->conn->query($sql);
-        
-        if ($result && $result->num_rows > 0) {
-            return $result->fetch_assoc();
+        $result = $this->conn->prepare($sql);
+        $result->execute([$email, $password]);
+
+        if ($result && $result->rowCount() > 0) {
+            return $result->fetch(PDO::FETCH_ASSOC);
         }
         
         return false;

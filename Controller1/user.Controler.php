@@ -1,6 +1,6 @@
 <?php
 
-mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+
 require_once("../Model/UserModel.php");
 
 class User_Controler {
@@ -11,7 +11,7 @@ class User_Controler {
         $this->model = new UserModel();
     }
 
-    function register($nombre, $email, $password, $ruta = null, $usuario) {
+    function register($nombre, $email, $password, $usuario, $ruta = null) {
         if (empty($nombre) || empty($email) || empty($password)) {
             return "campos_vacios";
         }
@@ -25,7 +25,7 @@ class User_Controler {
         }
 
         try {
-            $ok = $this->model->register($nombre, $email, $password, $ruta, $usuario);
+            $ok = $this->model->register($nombre, $email, $password, $usuario, $ruta);
             if ($ok) {
                 return "ok";
             } else {
@@ -44,7 +44,7 @@ class User_Controler {
                 }
                 return "error";
             }
-        } catch (mysqli_sql_exception $e) {
+        } catch (PDOException $e) {
             // DEBUG: ver qué error capturó
             error_log("DEBUG Controller: Exception capturada: " . $e->getMessage());
             
