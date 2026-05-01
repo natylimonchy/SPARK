@@ -17,7 +17,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'login') {
   if ($user && is_array($user)) {
     $_SESSION['user_id'] = $user['Nombre_Usuario'];
     $_SESSION['user_email'] = $user['Correo'];
-    $_SESSION['user_role'] = $user['id_usuario'];
+    $_SESSION['user_role'] = $user['id_perfil'];
     header('Location: perfil.php');
     exit();
   } else {

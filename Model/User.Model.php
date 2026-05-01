@@ -20,7 +20,7 @@ class UserModel {
 
         // IMPORTANTE: Para que esto funcione con "Imagen", debes ejecutar en tu SQL:
         // ALTER TABLE Usuario ADD COLUMN Imagen VARCHAR(255);
-        
+        $password_encriptada= password_hash($password, PASSWORD_DEFAULT);
         if ($ruta) {
             $sql = "INSERT INTO Usuario (Nombre_Usuario, Correo, Contraseña, id_perfil, Imagen)
                     VALUES (?, ?, ?, ?, ?)";
@@ -31,25 +31,27 @@ class UserModel {
 
         $stmt = $this->conn->prepare($sql);
         if ($ruta) {
-            return $stmt->execute([$nombre, $email, $password, $usuario, $ruta]);
+            return $stmt->execute([$nombre, $email, $password_encriptada, $usuario, $ruta]);
         } else {
-            return $stmt->execute([$nombre, $email, $password, $usuario]);
+            return $stmt->execute([$nombre, $email, $password_encriptada, $usuario]);
         }
     }
 
     public function login($email, $password) {
-        // Usamos Contraseña con 'ñ' porque así está en tu script de base de datos
-        $sql = "SELECT * FROM Usuario 
-                WHERE Correo=? AND Contraseña=?";
-
-        $result = $this->conn->prepare($sql);
-        $result->execute([$email, $password]);
-
-        if ($result && $result->rowCount() > 0) {
-            return $result->fetch(PDO::FETCH_ASSOC);
-        }
-        
-        return false;
+    
+    // Primero buscas el usuario SOLO por email
+    $sql = "SELECT * FROM Usuario WHERE Correo = ?";
+    $stmt = $this->conn->prepare($sql);
+    $stmt->execute([$email]);
+    
+    $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+    // Si existe el usuario Y la contraseña es correcta
+    if ($usuario && password_verify($password, $usuario['Contraseña'])) {
+        return $usuario; // devuelves todos los datos del usuario
+    }
+    
+    return false;
     }
 }
 ?>
