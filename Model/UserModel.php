@@ -26,32 +26,29 @@ class UserModel {
         }
      $stmt = $this->conn->prepare($sql);
         if ($ruta) {
-            return $stmt->execute([$nombre, $email, $password, $usuario, $ruta]);
+            return $stmt->execute([$nombre, $email,password_hash($password, PASSWORD_DEFAULT), $usuario, $ruta]);
         } else {
-            return $stmt->execute([$nombre, $email, $password, $usuario]);
-        }
-        return $this->conn->query($sql);
+            return $stmt->execute([$nombre, $email, password_hash($password, PASSWORD_DEFAULT), $usuario]);
+            }
+            
+            
     }
 
-    public function getLastError(): string
-{
-    $errorInfo = $this->conn->errorInfo();
-    return $errorInfo[2] ?? 'Error desconocido'; // Mensaje legible
-}
+
 
     public function login($email, $password) {
-       $sql = "SELECT * FROM Usuario 
-                WHERE Correo=? AND Contraseña=?";
-
-                   $result = $this->conn->prepare($sql);
-        $result->execute([$email, $password]);
-
-   
-        if ($result && $result->rowCount() > 0) {
-            return $result->fetch(PDO::FETCH_ASSOC);
-        }
-        
-        return false;
+       $sql = "SELECT * FROM Usuario WHERE Correo = ?";
+    $stmt = $this->conn->prepare($sql);
+    $stmt->execute([$email]);
+    
+    $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+    // Si existe el usuario Y la contraseña es correcta
+    if ($usuario && password_verify($password, $usuario['Contraseña'])) {
+        return $usuario; // devuelves todos los datos del usuario
+    }
+    
+    return false;
     }
 }
 ?>
