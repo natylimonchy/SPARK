@@ -77,5 +77,9 @@ class User_Controler {
         header("Location: login.php");
         exit();
     }
+
+    public function getUserById($nombre) {
+        return $this->model->getUserById($nombre);
+    }
 }
 ?>

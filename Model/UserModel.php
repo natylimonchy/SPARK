@@ -50,5 +50,12 @@ class UserModel {
     
     return false;
     }
+
+    public function getUserById($nombre) {
+        $sql = "SELECT * FROM Usuario WHERE Nombre_Usuario = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([$nombre]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 }
 ?>
