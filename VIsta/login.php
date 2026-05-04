@@ -2,6 +2,12 @@
 // UserController.php
 
 session_start();
+if (isset($_SESSION['user_id'])) {
+    header('Location: home.php');
+    exit();
+}
+
+
 require_once __DIR__ . '/../Controller1/user.Controler.php';
 
 $user_Controler = new User_Controler();
@@ -17,7 +23,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'login') {
   if ($user && is_array($user)) {
     $_SESSION['user_id'] = $user['Nombre_Usuario'];
     $_SESSION['user_email'] = $user['Correo'];
-    $_SESSION['user_role'] = $user['id_usuario'];
+    $_SESSION['user_role'] = $user['id_perfil'];
     header('Location: perfil.php');
     exit();
   } else {
@@ -57,7 +63,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'login') {
 
           <?php if ($error_mensaje): ?>
             <p style="color: red; text-align: center; font-size: 14px; margin-bottom: 15px;">
-              <?php echo $error_mensaje; ?>
+              <?php echo nl2br(htmlspecialchars($error_mensaje)); ?>
             </p>
           <?php endif; ?>
 

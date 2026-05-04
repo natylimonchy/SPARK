@@ -28,22 +28,8 @@ class User_Controler {
             $ok = $this->model->register($nombre, $email, $password, $usuario, $ruta);
             if ($ok) {
                 return "ok";
-            } else {
-                // Revisar si hay error de duplicidad en la conexión
-                $errorMsg = $this->model->getLastError();
-                error_log("DEBUG Controller: register() retornó false. Error MySQL: " . $errorMsg);
-                
-                if (strpos($errorMsg, 'Duplicate entry') !== false) {
-                    if (strpos($errorMsg, 'Nombre_Usuario') !== false) {
-                        return "usuario_existe";
-                    }
-                    if (strpos($errorMsg, 'Correo') !== false) {
-                        return "correo_existe";
-                    }
-                    return "usuario_o_email_duplicado";
-                }
-                return "error";
             }
+               
         } catch (PDOException $e) {
             // DEBUG: ver qué error capturó
             error_log("DEBUG Controller: Exception capturada: " . $e->getMessage());
@@ -88,8 +74,12 @@ class User_Controler {
         }
         $_SESSION = [];
         session_destroy();
-        header("Location: ../Vista/login.php");
+        header("Location: login.php");
         exit();
+    }
+
+    public function getUserById($nombre) {
+        return $this->model->getUserById($nombre);
     }
 }
 ?>

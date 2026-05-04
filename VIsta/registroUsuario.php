@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once __DIR__ . "/../Controller1/user.Controler.php";
 $mensaje = "";
 
@@ -13,17 +14,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mensaje = "Las contraseñas no coinciden.";
     } else {
         $user_Controler = new User_Controler();
-        $resultado = $user_Controler->register($name, $email, $password, null, $usuario);
+        $resultado = $user_Controler->register($name, $email, $password, $usuario, null);
 
         if ($resultado == "ok") {
-          if (session_status() === PHP_SESSION_NONE) {
-                session_start();
-            }
+          
 
             
             $_SESSION['user_email'] = $email; 
             $_SESSION['user_name'] = $name;   
-            $_SESSION['user_id'] = 1; 
+            $_SESSION['user_id'] = $name; 
 
             
             header("Location: home.php");
@@ -57,7 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <h2 id="registro-titulo">REGISTRO</h2>
 
     <?php if ($mensaje): ?>
-        <p class="error-msg"><?php echo $mensaje; ?></p>
+        <p class="error-msg"><?php echo htmlspecialchars($mensaje); ?></p>
     <?php endif; ?>
 
     <form method="POST">
