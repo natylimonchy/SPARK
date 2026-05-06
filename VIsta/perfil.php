@@ -4,10 +4,10 @@ session_start();
 if (!isset($_SESSION['user_id'])) {
   header('Location: login.php');
   exit();
-  }
-  require_once __DIR__ . '/../Controller1/user.Controler.php';
-  $userController = new User_Controler();
-  $user = $userController->getUserById($_SESSION['user_id']);
+}
+require_once __DIR__ . '/../Controller1/user.Controler.php';
+$userController = new User_Controler();
+$user = $userController->getUserById($_SESSION['user_id']);
 ?>
 
 <!DOCTYPE html>
@@ -66,9 +66,8 @@ if (!isset($_SESSION['user_id'])) {
           <!-- Foto + editar -->
           <div class="avatar-wrap">
             <img class="avatar" src="<?= htmlspecialchars($user['Imagen'] ?? 'recursos/pfp.png') ?>" alt="Foto de perfil">
-            <button class="edit-icon" aria-label="Editar perfil">
-            <a href="update.php" class="edit-icon">  
-            <img src="recursos/edit.png" alt="Editar perfil">
+            <a href="update.php" class="edit-icon">
+              <img src="recursos/edit.png" alt="Editar perfil">
             </a>
           </div>
 
