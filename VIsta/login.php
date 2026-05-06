@@ -4,6 +4,7 @@
 session_start();
 require_once __DIR__ . '/../Controller1/user.Controler.php';
 
+
 $user_Controler = new User_Controler();
 
 $error_mensaje = "";
@@ -16,8 +17,9 @@ if (isset($_POST['action']) && $_POST['action'] == 'login') {
 
   if ($user && is_array($user)) {
     $_SESSION['user_id'] = $user['Nombre_Usuario'];
+    $_SESSION['user_nombre'] = $user['Nombre_Usuario'];
     $_SESSION['user_email'] = $user['Correo'];
-    $_SESSION['user_role'] = $user['id_usuario'];
+    $_SESSION['user_role'] = $user['id_perfil'];
     header('Location: perfil.php');
     exit();
   } else {

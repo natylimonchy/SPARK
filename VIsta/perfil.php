@@ -1,13 +1,18 @@
 <?php
 session_start();
 if (!isset($_SESSION['user_id'])) {
-    header('Location: login.php');
-    exit();
+  header('Location: login.php');
+  exit();
 }
+
+$nombre = $_SESSION['user_nombre'];
+$email = $_SESSION['user_email'];
+
 ?>
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <title>Perfil</title>
@@ -26,25 +31,25 @@ if (!isset($_SESSION['user_id'])) {
     <div class="logo">SPARK</div>
 
     <nav class="menu">
-            <a href="home.php">Home</a>
-            <a href="https://www.google.com/maps">Mapa</a>
-            <a href="foro.php">Foro</a>
-        </nav>
+      <a href="home.php">Home</a>
+      <a href="https://www.google.com/maps">Mapa</a>
+      <a href="foro.php">Foro</a>
+    </nav>
 
     <div class="actions">
 
-        <?php if (isset($_SESSION['user_id'])): ?>
-            
-            <a href="logout.php" class="login">Cerrar sesión</a>
+      <?php if (isset($_SESSION['user_id'])): ?>
 
-        <?php else: ?>
-            <a href="login.php" class="login">Log in / Sign up</a>
-        <?php endif; ?>
-        <select id="español">
-            <option>Español</option>
-            <option>Ingles</option>
-            <option>Catalan</option>
-        </select>
+        <a href="logout.php" class="login">Cerrar sesión</a>
+
+      <?php else: ?>
+        <a href="login.php" class="login">Log in / Sign up</a>
+      <?php endif; ?>
+      <select id="español">
+        <option>Español</option>
+        <option>Ingles</option>
+        <option>Catalan</option>
+      </select>
     </div>
   </header>
 
@@ -61,15 +66,15 @@ if (!isset($_SESSION['user_id'])) {
           <!-- Foto + editar -->
           <div class="avatar-wrap">
             <img class="avatar" src="recursos/pfp.png" alt="Foto de perfil">
-            <button class="edit-icon" aria-label="Editar perfil">
+            <a href="update.php" class="edit-icon">
               <img src="recursos/edit.png" alt="Editar perfil">
-            </button>
+            </a>
           </div>
 
           <!-- Nombre + @ -->
           <div class="user-block">
-            <h2 class="name">Nombre de Usuario</h2>
-            <p class="handle">@tagusuario</p>
+            <h2 class="name"><?php echo htmlspecialchars($_SESSION['user_nombre']); ?></h2>
+            <p class="handle">@<?php echo htmlspecialchars($_SESSION['user_nombre']); ?></p>
           </div>
 
           <!-- Bio -->
@@ -149,4 +154,5 @@ if (!isset($_SESSION['user_id'])) {
   </div>
 
 </body>
+
 </html>

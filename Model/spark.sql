@@ -55,6 +55,7 @@ CREATE TABLE perfiles (
 ALTER TABLE Usuario ADD COLUMN Imagen VARCHAR(255);
 
 
-
+INSERT INTO perfiles (id_perfil, nombre_perfil) VALUES (1, 'usuario');
+INSERT INTO perfiles (id_perfil, nombre_perfil) VALUES (2, 'admin');
 
 /* */
