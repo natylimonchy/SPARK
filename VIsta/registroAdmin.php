@@ -28,6 +28,8 @@ session_start();
             $_SESSION['user_email'] = $email; 
             $_SESSION['user_name'] = $name;   
             $_SESSION['user_id'] = $name; 
+            $_SESSION['user_nombre'] = $name;
+            $_SESSION['user_role'] = 2; 
             
             header("Location: home.php");
             exit();

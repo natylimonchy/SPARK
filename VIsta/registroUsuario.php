@@ -23,6 +23,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['user_email'] = $email; 
             $_SESSION['user_name'] = $name;   
             $_SESSION['user_id'] = $name; 
+            $_SESSION['user_nombre'] = $name;
+            $_SESSION['user_role'] = 1; 
 
             
             header("Location: home.php");
