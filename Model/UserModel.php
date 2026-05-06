@@ -61,15 +61,28 @@ class UserModel {
     public function updateProfile($nombre_usuario_actual, $nombre, $email, $password, $ruta = null) {
     if ($ruta) {
         $sql = "UPDATE Usuario 
-                SET Nombre_Usuario='$nombre', Correo='$email', Contraseña='$password', Imagen='$ruta' 
-                WHERE Nombre_Usuario='$nombre_usuario_actual'";
+                SET Nombre_Usuario=?, Correo=?, Contraseña=?, Imagen=? 
+                WHERE Nombre_Usuario=?";
+        $stmt = $this->conn->prepare($sql);
+        return $stmt->execute([
+            $nombre,
+            $email,
+            password_hash($password, PASSWORD_DEFAULT),
+            $ruta,
+            $nombre_usuario_actual
+        ]);
     } else {
         $sql = "UPDATE Usuario 
-                SET Nombre_Usuario='$nombre', Correo='$email', Contraseña='$password' 
-                WHERE Nombre_Usuario='$nombre_usuario_actual'";
+                SET Nombre_Usuario=?, Correo=?, Contraseña=? 
+                WHERE Nombre_Usuario=?";
+        $stmt = $this->conn->prepare($sql);
+        return $stmt->execute([
+            $nombre,
+            $email,
+            password_hash($password, PASSWORD_DEFAULT),
+            $nombre_usuario_actual
+        ]);
     }
-    return $this->conn->query($sql);
-   
 }
 }
 ?>

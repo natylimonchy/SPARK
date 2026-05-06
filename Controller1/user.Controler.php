@@ -101,6 +101,9 @@ public function updateProfile($nombre, $email, $password, $ruta = null) {
             $_SESSION['user_email'] = $email;
             return "ok";
         }
+        else{
+            return "error";
+        }
     } catch (PDOException $e) {
         error_log("DEBUG Controller: Exception capturada: " . $e->getMessage());
 

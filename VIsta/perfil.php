@@ -74,7 +74,7 @@ if (!isset($_SESSION['user_id'])) {
 
           <!-- Nombre + @ -->
           <div class="user-block">
-            <h2 class="name"><?=htmlspecialchars($user['Nombre_Usuario']) ?></h2>
+            <h2 class="name"><?= htmlspecialchars($user['Nombre_Usuario']) ?></h2>
             <p class="handle">@<?= htmlspecialchars($user['Nombre_Usuario']) ?></p>
           </div>
 
