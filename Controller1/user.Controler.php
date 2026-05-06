@@ -1,6 +1,6 @@
 <?php
 
-mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+
 require_once("../Model/UserModel.php");
 
 class User_Controler {
@@ -11,7 +11,7 @@ class User_Controler {
         $this->model = new UserModel();
     }
 
-    function register($nombre, $email, $password, $ruta = null, $usuario) {
+    function register($nombre, $email, $password, $usuario, $ruta = null) {
         if (empty($nombre) || empty($email) || empty($password)) {
             return "campos_vacios";
         }
@@ -25,26 +25,12 @@ class User_Controler {
         }
 
         try {
-            $ok = $this->model->register($nombre, $email, $password, $ruta, $usuario);
+            $ok = $this->model->register($nombre, $email, $password, $usuario, $ruta);
             if ($ok) {
                 return "ok";
-            } else {
-                // Revisar si hay error de duplicidad en la conexión
-                $errorMsg = $this->model->getLastError();
-                error_log("DEBUG Controller: register() retornó false. Error MySQL: " . $errorMsg);
-                
-                if (strpos($errorMsg, 'Duplicate entry') !== false) {
-                    if (strpos($errorMsg, 'Nombre_Usuario') !== false) {
-                        return "usuario_existe";
-                    }
-                    if (strpos($errorMsg, 'Correo') !== false) {
-                        return "correo_existe";
-                    }
-                    return "usuario_o_email_duplicado";
-                }
-                return "error";
             }
-        } catch (mysqli_sql_exception $e) {
+               
+        } catch (PDOException $e) {
             // DEBUG: ver qué error capturó
             error_log("DEBUG Controller: Exception capturada: " . $e->getMessage());
             
@@ -88,7 +74,7 @@ class User_Controler {
         }
         $_SESSION = [];
         session_destroy();
-        header("Location: ../Vista/login.php");
+        header("Location: login.php");
         exit();
     }
 
@@ -114,22 +100,8 @@ public function updateProfile($nombre, $email, $password, $ruta = null) {
             $_SESSION['user_nombre'] = $nombre;
             $_SESSION['user_email'] = $email;
             return "ok";
-        } else {
-            $errorMsg = $this->model->getLastError();
-            error_log("DEBUG Controller: updateProfile() retornó false. Error MySQL: " . $errorMsg);
-
-            if (strpos($errorMsg, 'Duplicate entry') !== false) {
-                if (strpos($errorMsg, 'Nombre_Usuario') !== false) {
-                    return "usuario_existe";
-                }
-                if (strpos($errorMsg, 'Correo') !== false) {
-                    return "correo_existe";
-                }
-                return "usuario_o_email_duplicado";
-            }
-            return "error";
         }
-    } catch (mysqli_sql_exception $e) {
+    } catch (PDOException $e) {
         error_log("DEBUG Controller: Exception capturada: " . $e->getMessage());
 
         $errorMsg = $e->getMessage();
@@ -147,5 +119,8 @@ public function updateProfile($nombre, $email, $password, $ruta = null) {
         
     }
 }
+    public function getUserById($nombre) {
+        return $this->model->getUserById($nombre);
+    }
 }
 ?>

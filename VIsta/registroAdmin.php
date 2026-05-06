@@ -1,18 +1,5 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SPARK · Registro</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/SPARK/Vista/registro.css">
-</head>
-<body>
-
-  <div class="card">
-    <h2 id="registro-titulo">REGISTRO</h2>
-
-    <?php
+<?php
+session_start();
     require_once __DIR__ . "/../Controller1/user.Controler.php";
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -34,27 +21,36 @@
             echo "<p class='error-msg'>Las contraseñas no coinciden.</p>";
         } else {
             $user_Controler = new User_Controler();
-            $resultado = $user_Controler->register($name, $email, $password, $ruta, $usuario);
+            $resultado = $user_Controler->register($name, $email, $password, $usuario, $ruta);
 
             if ($resultado == "ok") {
-              
-          if (session_status() === PHP_SESSION_NONE) {
-                session_start();
-            }
-
-            
+                        
             $_SESSION['user_email'] = $email; 
             $_SESSION['user_name'] = $name;   
-            $_SESSION['user_id'] = 1; 
+            $_SESSION['user_id'] = $name; 
             
             header("Location: home.php");
             exit();
             } else {
-                echo "<p class='error-msg'>Error: " . $resultado . "</p>";
+                echo "<p class='error-msg'>Error: " . htmlspecialchars($resultado) . "</p>";
             }
         }
     }
     ?>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SPARK · Registro</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/SPARK/Vista/registro.css">
+</head>
+<body>
+
+  <div class="card">
+    <h2 id="registro-titulo">REGISTRO</h2>
+
 
     <form method="POST" enctype="multipart/form-data">
       <input type="text" name="name" placeholder="Nombre" required>

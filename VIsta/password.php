@@ -1,3 +1,13 @@
+<?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // cuando se envíe el formulario
+    // redirigir a login
+    header('Location: login.php');
+    exit();
+
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,15 +21,17 @@
     <div class="content">
         <h3>Contraseña olvidada</h3>
         <label for="email">Ingresa tu correo electronico:</label><br>
-        <input type="text" id="email" name="email"><br>
-        <br><a href="login.html">Volver a iniciar sesión</a><br>
+        <form action="password.php" method="POST">
+            
+            <input type="text" id="email" name="email"><br>
+        
+        <br><a href="login.php">Volver a iniciar sesión</a><br>
     
         <br>
-        <a href="login.php">
-
-            <input type="submit"  value="Enviar"> <br>
-        </a>
         
+            <input type="hidden" name="action" value="reset_password">
+            <input type="submit" value="Enviar">
+        </form>
     </div>
 
 </body>

@@ -5,9 +5,16 @@ Se crea la base de datos Spark con tres tablas. Usuario almacena la información
 Evento guarda los datos de cada evento y Asisten actúa como tabla intermedia registrando qué usuarios participan en cada evento.
  */
 
-create database spark;
-use spark;
+CREATE DATABASE spark;
+USE spark;
 
+-- Primero creamos perfiles porque Usuario depende de ella
+CREATE TABLE perfiles (
+    id_perfil INT PRIMARY KEY AUTO_INCREMENT,
+    nombre_perfil VARCHAR(50)
+);
+
+-- Ahora sí podemos crear Usuario
 CREATE TABLE Usuario (
     Nombre_Usuario VARCHAR(50) PRIMARY KEY,
     Telefono INT UNIQUE,
@@ -27,7 +34,7 @@ CREATE TABLE Usuario (
     REFERENCES perfiles(id_perfil)
 );
 
-CREATE TABLE Evento(
+CREATE TABLE Evento (
     Id_Evento INT AUTO_INCREMENT PRIMARY KEY,
     Descripcion VARCHAR(100),
     Fecha_evento DATE,
@@ -46,13 +53,16 @@ CREATE TABLE Asisten (
     FOREIGN KEY (Id_Evento) REFERENCES Evento(Id_Evento)
 );
 
-CREATE TABLE perfiles (
-    id_perfil INT PRIMARY KEY AUTO_INCREMENT,
-    nombre_perfil VARCHAR(50)
-
-);
-
+-- Correcciones con ALTER TABLE
+ALTER TABLE Usuario MODIFY Contraseña VARCHAR(255);
+ALTER TABLE Usuario MODIFY Telefono VARCHAR(15);
 ALTER TABLE Usuario ADD COLUMN Imagen VARCHAR(255);
+
+-- Insert de los tipos de perfiles 
+INSERT INTO perfiles (id_perfil, nombre_perfil) VALUES
+(1, 'Usuario'),
+(2, 'Administrador'),
+(3, 'Gerente');
 
 
 INSERT INTO perfiles (id_perfil, nombre_perfil) VALUES (1, 'usuario');

@@ -1,13 +1,13 @@
 <?php
 session_start();
+
 if (!isset($_SESSION['user_id'])) {
   header('Location: login.php');
   exit();
-}
-
-$nombre = $_SESSION['user_nombre'];
-$email = $_SESSION['user_email'];
-
+  }
+  require_once __DIR__ . '/../Controller1/user.Controler.php';
+  $userController = new User_Controler();
+  $user = $userController->getUserById($_SESSION['user_id']);
 ?>
 
 <!DOCTYPE html>
@@ -65,16 +65,17 @@ $email = $_SESSION['user_email'];
 
           <!-- Foto + editar -->
           <div class="avatar-wrap">
-            <img class="avatar" src="recursos/pfp.png" alt="Foto de perfil">
-            <a href="update.php" class="edit-icon">
-              <img src="recursos/edit.png" alt="Editar perfil">
+            <img class="avatar" src="<?= htmlspecialchars($user['Imagen'] ?? 'recursos/pfp.png') ?>" alt="Foto de perfil">
+            <button class="edit-icon" aria-label="Editar perfil">
+            <a href="update.php" class="edit-icon">  
+            <img src="recursos/edit.png" alt="Editar perfil">
             </a>
           </div>
 
           <!-- Nombre + @ -->
           <div class="user-block">
-            <h2 class="name"><?php echo htmlspecialchars($_SESSION['user_nombre']); ?></h2>
-            <p class="handle">@<?php echo htmlspecialchars($_SESSION['user_nombre']); ?></p>
+            <h2 class="name"><?=htmlspecialchars($user['Nombre_Usuario']) ?></h2>
+            <p class="handle">@<?= htmlspecialchars($user['Nombre_Usuario']) ?></p>
           </div>
 
           <!-- Bio -->
