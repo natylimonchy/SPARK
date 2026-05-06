@@ -65,6 +65,7 @@ INSERT INTO perfiles (id_perfil, nombre_perfil) VALUES
 (3, 'Gerente');
 
 
-
+INSERT INTO perfiles (id_perfil, nombre_perfil) VALUES (1, 'usuario');
+INSERT INTO perfiles (id_perfil, nombre_perfil) VALUES (2, 'admin');
 
 /* */

@@ -78,6 +78,47 @@ class User_Controler {
         exit();
     }
 
+public function updateProfile($nombre, $email, $password, $ruta = null) {
+    $nombre_usuario_actual = $_SESSION['user_nombre'];
+
+    if (empty($nombre) || empty($email) || empty($password)) {
+        return "campos_vacios";
+    }
+
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        return "email_invalido";
+    }
+
+    if (strlen($password) < 4) {
+        return "password_corta";
+    }
+
+    try {
+        $ok = $this->model->updateProfile($nombre_usuario_actual, $nombre, $email, $password, $ruta);
+        if ($ok) {
+            // Actualizamos la sesión con el nuevo nombre
+            $_SESSION['user_nombre'] = $nombre;
+            $_SESSION['user_email'] = $email;
+            return "ok";
+        }
+    } catch (PDOException $e) {
+        error_log("DEBUG Controller: Exception capturada: " . $e->getMessage());
+
+        $errorMsg = $e->getMessage();
+
+        if (strpos($errorMsg, 'Duplicate entry') !== false) {
+            if (strpos($errorMsg, 'Nombre_Usuario') !== false) {
+                return "usuario_existe";
+            }
+            if (strpos($errorMsg, 'Correo') !== false) {
+                return "correo_existe";
+            }
+            return "usuario_o_email_duplicado";
+        }
+        return "error_base_datos";
+        
+    }
+}
     public function getUserById($nombre) {
         return $this->model->getUserById($nombre);
     }

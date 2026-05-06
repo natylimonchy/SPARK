@@ -12,6 +12,7 @@ if (!isset($_SESSION['user_id'])) {
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <title>Perfil</title>
@@ -30,25 +31,25 @@ if (!isset($_SESSION['user_id'])) {
     <div class="logo">SPARK</div>
 
     <nav class="menu">
-            <a href="home.php">Home</a>
-            <a href="https://www.google.com/maps">Mapa</a>
-            <a href="foro.php">Foro</a>
-        </nav>
+      <a href="home.php">Home</a>
+      <a href="https://www.google.com/maps">Mapa</a>
+      <a href="foro.php">Foro</a>
+    </nav>
 
     <div class="actions">
 
-        <?php if (isset($_SESSION['user_id'])): ?>
-            
-            <a href="logout.php" class="login">Cerrar sesión</a>
+      <?php if (isset($_SESSION['user_id'])): ?>
 
-        <?php else: ?>
-            <a href="login.php" class="login">Log in / Sign up</a>
-        <?php endif; ?>
-        <select id="español">
-            <option>Español</option>
-            <option>Ingles</option>
-            <option>Catalan</option>
-        </select>
+        <a href="logout.php" class="login">Cerrar sesión</a>
+
+      <?php else: ?>
+        <a href="login.php" class="login">Log in / Sign up</a>
+      <?php endif; ?>
+      <select id="español">
+        <option>Español</option>
+        <option>Ingles</option>
+        <option>Catalan</option>
+      </select>
     </div>
   </header>
 
@@ -66,8 +67,9 @@ if (!isset($_SESSION['user_id'])) {
           <div class="avatar-wrap">
             <img class="avatar" src="<?= htmlspecialchars($user['Imagen'] ?? 'recursos/pfp.png') ?>" alt="Foto de perfil">
             <button class="edit-icon" aria-label="Editar perfil">
-              <img src="recursos/edit.png" alt="Editar perfil">
-            </button>
+            <a href="update.php" class="edit-icon">  
+            <img src="recursos/edit.png" alt="Editar perfil">
+            </a>
           </div>
 
           <!-- Nombre + @ -->
@@ -153,4 +155,5 @@ if (!isset($_SESSION['user_id'])) {
   </div>
 
 </body>
+
 </html>
