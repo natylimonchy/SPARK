@@ -61,6 +61,9 @@ if (isset($_POST['action']) && $_POST['action'] == 'update') {
     <div class="actions">
       <a href="logout.php" class="login">Cerrar sesión</a>
     </div>
+    <div>
+        <a href="eliminar.php" class="delete">Eliminar cuenta</a>
+    </div>
   </header>
 
   <div class="layout">

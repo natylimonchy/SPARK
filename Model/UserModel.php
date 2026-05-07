@@ -71,5 +71,12 @@ class UserModel {
     return $this->conn->query($sql);
    
 }
+
+public function deleteProfile ($email){
+    $sql = "DELETE FROM Usuario WHERE Correo = ?";
+    $stmt = $this->conn->prepare($sql);
+    return $stmt->execute([$email]);
+    
+}
 }
 ?>
