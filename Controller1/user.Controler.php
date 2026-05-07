@@ -122,6 +122,18 @@ public function updateProfile($nombre, $email, $password, $ruta = null) {
         
     }
 }
+
+public function deleteProfile ($email){
+    try {
+        $ok = $this->model->deleteProfile($email);
+        if ($ok) {
+            return "ok";
+        }
+    } catch (PDOException $e) {
+        error_log("DEBUG Controller: Exception capturada: " . $e->getMessage());
+        return "error_base_datos";
+    }
+}
     public function getUserById($nombre) {
         return $this->model->getUserById($nombre);
     }
