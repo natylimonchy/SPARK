@@ -36,6 +36,7 @@ CREATE TABLE Usuario (
 
 CREATE TABLE Evento (
     Id_Evento INT AUTO_INCREMENT PRIMARY KEY,
+    Nombre_evento VARCHAR(200),
     Descripcion VARCHAR(100),
     Fecha_evento DATE,
     Ubicacion VARCHAR(50)
