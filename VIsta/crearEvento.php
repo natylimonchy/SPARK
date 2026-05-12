@@ -1,5 +1,13 @@
 <?php
 session_start();
+  if (!isset($_SESSION['user_id'])) {
+    if($_SESSION['user_role'] != 1){
+      header('Location: home.php');
+      exit();
+    }
+  header('Location: login.php');
+  exit();
+}
     require_once __DIR__ . "/../Controller1/user.Controler.php";
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {

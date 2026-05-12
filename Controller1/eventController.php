@@ -20,11 +20,18 @@ public function getEvents() {
 }
 
 
-public function updateEvent() {
+public function updateEvent($Id_Evento, $nombre, $descripcion, $fecha_evento, $ubicacion) {
+   
+        return $this->model->updateEvent($Id_Evento, $nombre, $descripcion, $fecha_evento, $ubicacion);
+     
    
 }
-public function deleteEvent() {
+public function deleteEvent($Id_Evento){
+    
+        return $this->model->deleteEvent($Id_Evento);
 
-    }
+
+}
 }
 ?>
+
