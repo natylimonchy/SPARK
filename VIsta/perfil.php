@@ -149,6 +149,12 @@ $user = $userController->getUserById($_SESSION['user_id']);
           <img src="recursos/photo.png" alt="Foto de la mejor reseña">
         </div>
       </div>
+      <div class="but_crear_event"></div>
+      
+      <a href="crearEvento.php">
+        <button class="crear_event">Crear evento</button>
+      </a>
+   
     </aside>
 
   </div>
