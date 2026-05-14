@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 if (!isset($_SESSION['user_id'])) {
   header('Location: login.php');
   exit();
@@ -9,156 +8,163 @@ require_once __DIR__ . '/../Controller1/user.Controler.php';
 $userController = new User_Controler();
 $user = $userController->getUserById($_SESSION['user_id']);
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8">
-  <title>Perfil</title>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SPARK · Perfil</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="perfil.css">
 </head>
-
 <body>
 
-  <!-- HEADER -->
-  <header class="topbar">
-    <div class="logo">SPARK</div>
+<!-- ── NAV ──────────────────────────────────────── -->
+<header class="topbar">
+  <a href="home.php" class="nav-logo">
+    <img src="recursos/logo.png" alt="SPARK">
+  </a>
+  <nav class="menu">
+    <a href="home.php">Home</a>
+    <a href="https://www.google.com/maps" target="_blank">Mapa</a>
+    <a href="foro.php">Foro</a>
+  </nav>
+  <div class="actions">
+    <a href="logout.php" class="login">Cerrar sesión</a>
+    <select id="español">
+      <option>Español</option>
+      <option>English</option>
+      <option>Català</option>
+    </select>
+  </div>
+</header>
 
-    <nav class="menu">
-      <a href="home.php">Home</a>
-      <a href="https://www.google.com/maps">Mapa</a>
-      <a href="foro.php">Foro</a>
-    </nav>
+<!-- ── HERO PERFIL ────────────────────────────────── -->
+<section class="profile-hero">
+  <div class="profile-hero__bg"></div>
+  <div class="profile-hero__grain"></div>
+  <div class="profile-hero__overlay"></div>
 
-    <div class="actions">
+  <div class="profile-hero__inner">
 
-      <?php if (isset($_SESSION['user_id'])): ?>
-
-        <a href="logout.php" class="login">Cerrar sesión</a>
-
-      <?php else: ?>
-        <a href="login.php" class="login">Log in / Sign up</a>
-      <?php endif; ?>
-      <select id="español">
-        <option>Español</option>
-        <option>Ingles</option>
-        <option>Catalan</option>
-      </select>
-    </div>
-  </header>
-
-  <!-- LAYOUT -->
-  <div class="layout">
-
-    <!-- COLUMNA IZQUIERDA -->
-    <div class="left">
-
-      <!-- CABECERA PERFIL -->
-      <section class="profile">
-        <div class="profile-top">
-
-          <!-- Foto + editar -->
-          <div class="avatar-wrap">
-            <img class="avatar" src="<?= htmlspecialchars($user['Imagen'] ?? 'recursos/pfp.png') ?>" alt="Foto de perfil">
-            <a href="update.php" class="edit-icon">
-              <img src="recursos/edit.png" alt="Editar perfil">
-            </a>
-          </div>
-
-          <!-- Nombre + @ -->
-          <div class="user-block">
-            <h2 class="name"><?= htmlspecialchars($user['Nombre_Usuario']) ?></h2>
-            <p class="handle">@<?= htmlspecialchars($user['Nombre_Usuario']) ?></p>
-          </div>
-
-          <!-- Bio -->
-          <div class="bio">
-            <p><strong>Bio</strong></p>
-            <p class="bio-text">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi.
-            </p>
-          </div>
-
-        </div>
-
-        <!-- Stats -->
-        <div class="stats">
-          <div>
-            <strong>0</strong>
-            <span>Asistidos</span>
-          </div>
-          <div>
-            <strong>0</strong>
-            <span>Seguidores</span>
-          </div>
-          <div>
-            <strong>0</strong>
-            <span>Seguidos</span>
-          </div>
-        </div>
-      </section>
-
-      <!-- NAV PERFIL -->
-      <nav class="profile-nav">
-        <ul>
-          <li><a class="active" href="#">Publicaciones</a></li>
-          <li><a href="#">Intereses</a></li>
-          <li><a href="#">Reseñas</a></li>
-        </ul>
-      </nav>
-
-      <!-- POSTS -->
-      <main>
-        <section class="posts-grid">
-          <article><img src="recursos/photo.png" alt="Publicación 1"></article>
-          <article><img src="recursos/photo.png" alt="Publicación 2"></article>
-          <article><img src="recursos/photo.png" alt="Publicación 3"></article>
-          <article><img src="recursos/photo.png" alt="Publicación 4"></article>
-          <article><img src="recursos/photo.png" alt="Publicación 5"></article>
-          <article><img src="recursos/photo.png" alt="Publicación 6"></article>
-        </section>
-      </main>
-
-    </div>
-
-    <!-- COLUMNA DERECHA -->
-    <aside class="panel">
-      <div class="panel-section">
-        <h3>Próximo evento</h3>
-        <div class="panel-box panel-photo">
-          <img src="recursos/photo.png" alt="Foto del próximo evento">
-        </div>
-      </div>
-
-      <div class="panel-section">
-        <h3>Último seguidor</h3>
-        <div class="panel-box panel-text">
-          <p>@tagusuario</p>
-        </div>
-      </div>
-
-      <div class="panel-section">
-        <h3>Mejor reseña</h3>
-        <div class="panel-box panel-photo">
-          <img src="recursos/photo.png" alt="Foto de la mejor reseña">
-        </div>
-      </div>
-      <div class="but_crear_event"></div>
-      
-      <a href="crearEvento.php">
-        <button class="crear_event">Crear evento</button>
+    <!-- Avatar -->
+    <div class="avatar-wrap">
+      <img class="avatar"
+           src="<?= htmlspecialchars($user['Imagen'] ?? 'recursos/pfp.png') ?>"
+           alt="Foto de perfil">
+      <a href="update.php" class="edit-icon" title="Editar perfil">
+        <img src="recursos/edit.png" alt="Editar">
       </a>
-   
-    </aside>
+    </div>
+
+    <!-- Nombre + bio -->
+    <div class="profile-text">
+      <div class="profile-info">
+        <h1><?= htmlspecialchars($user['Nombre_Usuario']) ?></h1>
+        <span>@<?= htmlspecialchars($user['Nombre_Usuario']) ?></span>
+      </div>
+      <p class="bio-text">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi.
+      </p>
+    </div>
 
   </div>
+</section>
 
+<!-- ── STATS ──────────────────────────────────────── -->
+<div class="stats-bar">
+  <div class="stat">
+    <strong>0</strong>
+    <span>Asistidos</span>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat">
+    <strong>0</strong>
+    <span>Seguidores</span>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat">
+    <strong>0</strong>
+    <span>Seguidos</span>
+  </div>
+</div>
+
+<!-- ── CONTENIDO ──────────────────────────────────── -->
+<div class="content-layout">
+
+  <!-- POSTS -->
+  <div class="posts-section">
+    <nav class="profile-tabs">
+      <a class="active" href="#">Publicaciones</a>
+      <a href="#">Intereses</a>
+      <a href="#">Reseñas</a>
+    </nav>
+
+    <div class="posts-grid">
+      <article><img src="recursos/photo.png" alt="Post 1"></article>
+      <article><img src="recursos/photo.png" alt="Post 2"></article>
+      <article><img src="recursos/photo.png" alt="Post 3"></article>
+      <article><img src="recursos/photo.png" alt="Post 4"></article>
+      <article><img src="recursos/photo.png" alt="Post 5"></article>
+      <article><img src="recursos/photo.png" alt="Post 6"></article>
+    </div>
+  </div>
+
+  <!-- PANEL LATERAL -->
+  <aside class="side-panel">
+    <div class="panel-card">
+      <h3>Próximo evento</h3>
+      <div class="panel-img">
+        <img src="recursos/photo.png" alt="Próximo evento">
+      </div>
+    </div>
+    <div class="panel-card">
+      <h3>Último seguidor</h3>
+      <div class="panel-user">@tagusuario</div>
+    </div>
+    <div class="panel-card">
+      <h3>Mejor reseña</h3>
+      <div class="panel-img">
+        <img src="recursos/photo.png" alt="Mejor reseña">
+      </div>
+    </div>
+    <a href="crearEvento.php" class="crear-event-btn">+ Crear evento</a>
+  </aside>
+
+</div>
+
+<!-- ── FOOTER ─────────────────────────────────────── -->
+<footer class="footer">
+  <div class="footer-inner">
+    <img class="footer-logo-img" src="recursos/logo.png" alt="SPARK">
+    <p class="footer-tagline">Plans, people, memories.</p>
+    <nav class="footer-nav">
+      <a href="https://www.instagram.com" target="_blank">Instagram</a>
+      <a href="https://www.tiktok.com" target="_blank">TikTok</a>
+      <a href="tipoUsuario.php">Organizar</a>
+    </nav>
+    <p class="footer-copy">© <?= date('Y') ?> SPARK · Todos los derechos reservados</p>
+  </div>
+</footer>
+
+<!-- ── MOBILE NAV ────────────────────────────────── -->
+<nav class="mobile-nav">
+  <a href="home.php"><span>🏠</span></a>
+  <a href="https://www.google.com/maps"><span>📍</span></a>
+  <a href="foro.php"><span>💬</span></a>
+  <a href="perfil.php"><span>👤</span></a>
+</nav>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+$(function () {
+  $('.profile-tabs a').on('click', function (e) {
+    e.preventDefault();
+    $('.profile-tabs a').removeClass('active');
+    $(this).addClass('active');
+  });
+});
+</script>
 </body>
-
 </html>

@@ -47,45 +47,58 @@ if (isset($_POST['action']) && $_POST['action'] == 'login') {
 </head>
 
 <body>
-  <main class="layout">
+  
+<div class="auth-layout">
 
-    <section class="hero">
-      <h1 class="logo">SPARK</h1>
-      <img
-        src="recursos/Diseño sin título (1).png"
-        alt="Spark mascot"
-        class="hero-image">
+  <!-- LADO IZQUIERDO — hero oscuro -->
+  <div class="auth-hero">
+  <div class="hero-bg"></div>
 
-    </section>
+  
 
-    <section class="auth">
-      <div class="card">
-        <h2>Iniciar sesión</h2>
-        <form action="login.php" method="POST">
+  <img class="hero-logo" src="recursos/logo.png" alt="SPARK">
 
-          <?php if ($error_mensaje): ?>
-            <p style="color: red; text-align: center; font-size: 14px; margin-bottom: 15px;">
-              <?php echo nl2br(htmlspecialchars($error_mensaje)); ?>
-            </p>
-          <?php endif; ?>
+  <div class="hero-grain"></div>
 
+  <div class="hero-content">
+    
+
+  </div>
+</div>
+
+  <!-- LADO DERECHO — formulario -->
+  <div class="auth-form-wrap">
+    <div class="auth-card">
+
+      <p class="auth-eyebrow">Tu cuenta</p>
+      <h2 class="auth-title">Iniciar sesión</h2>
+
+
+
+      <form method="POST" action="login.php">
+        <div class="field">
           <label for="email">Email</label>
-          <input type="email" id="email" name="email" required>
+          <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+        </div>
 
+        <div class="field">
           <label for="password">Contraseña</label>
-          <input type="password" id="password" name="password" required>
+          <input type="password" id="password" name="password" placeholder="••••••••" required>
+        </div>
 
-          <a class="link" href="password.php">¿Olvidaste tu contraseña?</a>
+        <a class="forgot-link" href="password.php">¿Olvidaste tu contraseña?</a>
 
-          <button type="submit" name="action" value="login">Entrar</button>
-        </form>
+        <button type="submit" name="action" value="login" class="auth-btn">Entrar →</button>
+      </form>
 
+      <p class="auth-footer-text">
+        ¿No tienes cuenta? <a href="tipoUsuario.php">Únete a SPARK</a>
+      </p>
 
-        <p class="link">¿No tienes cuenta? <a href="tipoUsuario.php">Únete</a></p>
-      </div>
-    </section>
+    </div>
+  </div>
 
-  </main>
+</div>
 </body>
 
 </html>
