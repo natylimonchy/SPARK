@@ -24,6 +24,9 @@ session_start();
   </div>
 
   <header class="topbar">
+    <a href="home.php" class="nav-logo">
+    <img src="recursos/logo.png" alt="SPARK">
+  </a>
     <nav class="menu">
       <a href="home.php">Home</a>
       <a href="https://www.google.com/maps">Mapa</a>
@@ -290,12 +293,11 @@ session_start();
 <!-- ── FOOTER ──────────────────────────────────────── -->
 <footer class="footer">
   <div class="footer-inner">
-    <a href="home.php" class="footer-logo">SP<span>▲</span>RK</a>
-    <p class="footer-tagline">Barcelona, siempre.</p>
+    <img class ="logo"src="recursos/logo.png" alt="SPARK">
+    <p class="footer-tagline">Plans, people, memories.</p>
     <nav class="footer-nav">
-      <a href="home.php">Home</a>
-      <a href="foro.php">Foro</a>
-      <a href="perfil.php">Perfil</a>
+      <a href="https://www.instagram.com" target="_blank">Instagram</a>
+      <a href="https://www.tiktok.com" target="_blank">Tiktok</a>
       <a href="tipoUsuario.php">Organizar</a>
     </nav>
     <p class="footer-copy">© <?= date('Y') ?> SPARK · Todos los derechos reservados</p>
