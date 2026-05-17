@@ -6,6 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <?php include 'cookies-banner.php'; ?>
+<script src="js/cookies.js"></script>
 </body>
 </html>

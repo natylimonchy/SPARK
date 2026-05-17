@@ -9,7 +9,7 @@
   --beige:    #f3f0e9;
   --muted:    #9A9186;
   --nav-h: 0px;
- 
+}
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -553,5 +553,4 @@ a { text-decoration: none; color: inherit; }
  
   .ev-layout { padding: 20px 16px 80px; gap: 16px; }
   .ev-desc { padding: 20px; }
-}
 }

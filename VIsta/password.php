@@ -1,38 +1,55 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // cuando se envíe el formulario
-    // redirigir a login
     header('Location: login.php');
     exit();
-
 }
+
+$page_title = 'SPARK · Recuperar contraseña';
+$page_css   = 'password.css';
+include 'layout-top.php';
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="password.css">
-    <title>Document</title>
-</head>
-<body>
-    <div class="content">
-        <h3>Contraseña olvidada</h3>
-        <label for="email">Ingresa tu correo electronico:</label><br>
-        <form action="password.php" method="POST">
-            
-            <input type="text" id="email" name="email"><br>
-        
-        <br><a href="login.php">Volver a iniciar sesión</a><br>
-    
-        <br>
-        
-            <input type="hidden" name="action" value="reset_password">
-            <input type="submit" value="Enviar">
-        </form>
-    </div>
+<div class="auth-layout">
 
-</body>
-</html>
+  <div class="auth-hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grain"></div>
+    <div class="hero-content">
+      <a href="login.php" class="brand">
+        <img src="recursos/logo.png" alt="SPARK">
+      </a>
+      <h1 class="hero-headline">
+        <span class="line-a">¿OLVIDASTE</span>
+        <span class="line-b">tu clave?</span>
+      </h1>
+      <p class="hero-sub">Te enviamos un enlace para recuperarla.</p>
+    </div>
+  </div>
+
+  <div class="auth-form-wrap">
+    <div class="auth-card">
+
+      <p class="auth-eyebrow">Recuperación</p>
+      <h2 class="auth-title">Tu email</h2>
+      <p class="auth-desc">Ingresa el correo con el que te registraste.</p>
+
+      <form action="password.php" method="POST">
+        <input type="hidden" name="action" value="reset_password">
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email"
+                 placeholder="tu@email.com" required>
+        </div>
+        <button type="submit" class="auth-btn">Enviar enlace →</button>
+      </form>
+
+      <p class="auth-footer-text">
+        <a href="login.php">← Volver a iniciar sesión</a>
+      </p>
+
+    </div>
+  </div>
+
+</div>
+
+<?php include 'layout-bottom.php'; ?>
