@@ -1,51 +1,106 @@
+
 <?php
 session_start();
-  if (!isset($_SESSION['user_id'])) {
-    if($_SESSION['user_role'] != 1){
-      header('Location: home.php');
-      exit();
-    }
-  header('Location: login.php');
-  exit();
+
+// Solo organizadores
+if (!isset($_SESSION['user_id']) || $_SESSION['user_role'] != 2) {
+    header('Location: home.php');
+    exit();
 }
-    require_once __DIR__ . "/../Controller1/user.Controler.php";
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $name = $_POST['name'];
-        $descripcion = $_POST['descripcion'];
-        $fecha_evento = $_POST['fecha_evento'];
-        $ubicacion = $_POST["ubicacion"];
-        
-    }
+require_once __DIR__ . '/../Controller1/eventController.php';
+$eventController = new EventController();
 
-        
-           
-    
-    ?>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SPARK · Registro</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/SPARK/Vista/registro.css">
-</head>
-<body>
+$error   = "";
+$success = "";
 
-  <div class="card">
-    <h2 id="registro-titulo">Registrar evento</h2>
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $nombre      = trim($_POST['nombre']);
+    $descripcion = trim($_POST['descripcion']);
+    $fecha       = $_POST['fecha_evento'];
+    $ubicacion   = trim($_POST['ubicacion']);
 
+    // TODO: cuando tu compañero implemente register() en EventController
+    // descomentar esto:
+    // $resultado = $eventController->register($nombre, $descripcion, $fecha, $ubicacion);
+    // if ($resultado === 'ok') {
+    //     header('Location: perfil.php');
+    //     exit();
+    // } else {
+    //     $error = 'Error al crear el evento.';
+    // }
 
-    <form method="POST" enctype="multipart/form-data">
-      <input type="text" name="name" placeholder="Nombre" required>
-      <input type="email" name="email" placeholder="Descripcion" required>
-      <input type="file" name="imagen" required>
-      <input type="password" name="password" placeholder="Fecha del evento" required>
-      <input type="password" name="password_confir" placeholder="Ubicacion" required>
-      <button type="submit">Registrar</button>
-    </form>
+    $success = "Funcionalidad pendiente — el método register() está en desarrollo.";
+}
+
+$page_title = 'SPARK · Crear evento';
+$page_css   = 'editarEvento.css';
+include 'layout-top.php';
+?>
+
+<header class="topbar">
+  <a href="home.php" class="nav-logo">
+    <img src="recursos/logo.png" alt="SPARK">
+  </a>
+  <nav class="menu">
+    <a href="home.php">Home</a>
+    <a href="https://www.google.com/maps" target="_blank">Mapa</a>
+    <a href="foro.php">Foro</a>
+  </nav>
+  <div class="actions">
+    <a href="perfil.php" class="login">Perfil</a>
+    <a href="logout.php" class="login">Cerrar sesión</a>
   </div>
+</header>
 
-</body>
-</html>
+<div class="update-layout">
+  <div class="edit-card">
+    <div class="edit-card-header">
+      <div>
+        <p class="edit-eyebrow">Organizador</p>
+        <h2 class="edit-title">Crear evento</h2>
+      </div>
+    </div>
+
+    <?php if ($error): ?>
+      <div class="form-error"><?= htmlspecialchars($error) ?></div>
+    <?php endif; ?>
+
+    <?php if ($success): ?>
+      <div class="form-success"><?= htmlspecialchars($success) ?></div>
+    <?php endif; ?>
+
+    <form method="POST">
+      <div class="field">
+        <label for="nombre">Nombre del evento</label>
+        <input type="text" id="nombre" name="nombre" placeholder="Ej: Noche Electrónica" required>
+      </div>
+
+      <div class="field">
+        <label for="descripcion">Descripción</label>
+        <textarea id="descripcion" name="descripcion" rows="4"
+                  placeholder="Describe tu evento..." required></textarea>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="fecha_evento">Fecha</label>
+          <input type="date" id="fecha_evento" name="fecha_evento" required>
+        </div>
+        <div class="field">
+          <label for="ubicacion">Ubicación</label>
+          <input type="text" id="ubicacion" name="ubicacion"
+                 placeholder="Ej: Sala Apolo, Barcelona" required>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <a href="perfil.php" class="btn-cancel">Cancelar</a>
+        <button type="submit" class="btn-save">Crear evento →</button>
+      </div>
+    </form>
+
+  </div>
+</div>
+
+<?php include 'layout-bottom.php'; ?>

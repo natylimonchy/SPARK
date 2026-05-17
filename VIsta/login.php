@@ -32,21 +32,12 @@ if (isset($_POST['action']) && $_POST['action'] == 'login') {
     $error_mensaje = "Correo o contraseña incorrectos.";
   }
 }
+ $page_title = 'SPARK · Iniciar sesión';
+$page_css   = 'login.css';
+include 'layout-top.php'; 
 ?>
 
-<!DOCTYPE html>
-<html lang="es">
 
-<head>
-  <meta charset="UTF-8" />
-  <title>SPARK · Iniciar sesión</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="login.css">
-
-</head>
-
-<body>
   
 <div class="auth-layout">
 
@@ -99,6 +90,4 @@ if (isset($_POST['action']) && $_POST['action'] == 'login') {
   </div>
 
 </div>
-</body>
-
-</html>
+<?php include 'layout-bottom.php'; ?>

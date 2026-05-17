@@ -7,18 +7,13 @@ if (!isset($_SESSION['user_id'])) {
 require_once __DIR__ . '/../Controller1/user.Controler.php';
 $userController = new User_Controler();
 $user = $userController->getUserById($_SESSION['user_id']);
+
+$page_title = 'SPARK · Perfil';
+$page_css   = 'perfil.css';
+include 'layout-top.php';
 ?>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SPARK · Perfil</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="perfil.css">
-</head>
-<body>
+
+
 
 <!-- ── NAV ──────────────────────────────────────── -->
 <header class="topbar">
@@ -129,7 +124,12 @@ $user = $userController->getUserById($_SESSION['user_id']);
         <img src="recursos/photo.png" alt="Mejor reseña">
       </div>
     </div>
+    <?php if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 2): ?>
     <a href="crearEvento.php" class="crear-event-btn">+ Crear evento</a>
+    <?php endif; ?>
+    <?php if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 2): ?>
+    <a href="editarEvento.php" class="editar-event-btn">✏️ Modificar evento</a>
+<?php endif; ?>
   </aside>
 
 </div>
@@ -166,5 +166,4 @@ $(function () {
   });
 });
 </script>
-</body>
-</html>
+<?php include 'layout-bottom.php'; ?>
